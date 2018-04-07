@@ -65,6 +65,7 @@ html, body {
     float: left;
     width: 33%;
     height: 100%;
+    padding: 1px;
 }
 
 .full-height.nocode .block {
@@ -100,6 +101,11 @@ html, body {
 #input, .script, #output {
     height: 100%;
     outline: none;
+}
+
+#input, #output {
+    box-shadow: 0 0 3px;
+    padding: 15px;
 }
 
 #output {

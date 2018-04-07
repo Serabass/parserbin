@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Parserbin - Parser everything!</title>
+        <title>Parserbin - Parse everything!</title>
 
         <script src="/bower_components/jquery/dist/jquery.min.js"></script>
         <script src="/bower_components/codemirror/lib/codemirror.js"></script>

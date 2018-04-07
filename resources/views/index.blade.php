@@ -9,8 +9,7 @@
 @section('content')
     <div class="input block">
         <h4>Input</h4>
-        <textarea name="input" id="input" cols="50"
-                  rows="50">{{ isset($parser) ? $parser->input : 'Hello!' }}</textarea>
+        <pre contenteditable="true" readonly="" id="input">{{ isset($parser) ? $parser->input : 'Hello!' }}</pre>
     </div>
     <div class="scripts block" style="float: left;">
         <h4>Script</h4>
@@ -30,8 +29,6 @@
         <h4>Output</h4>
         <pre contenteditable="true" id="output" readonly=""></pre>
     </div>
-    <input id="evaluate" type="button" value="Evaluate"/>
-
     <form action="{{ route('update-parser') }}" id="saveform" method="post">
         <input type="hidden" name="data"/>
         {{ csrf_field() }}

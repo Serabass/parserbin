@@ -3,6 +3,7 @@ $(function () {
         return CodeMirror.fromTextArea(element, {
             lineNumbers: true,
             lineWrapping: true,
+            mode:  "javascript",
             extraKeys: {
                 "Ctrl-Q": function (cm) {
                     cm.foldCode(cm.getCursor());
@@ -10,19 +11,16 @@ $(function () {
             },
             foldGutter: true,
             gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-        })
+        });
     }
 
     $('textarea.script').each(function () {
         window.scriptEditor = applyEditor(this);
     });
-    $('#input').each(function () {
-        window.inputEditor = applyEditor(this);
-    });
 
     $('#evaluate').click(function (e) {
         e.preventDefault();
-        var input = inputEditor.getValue(),
+        var input = $('#input').html(),
             scripts = [scriptEditor.getValue()];
 
         scripts.reduce(function (val, script) {
@@ -40,12 +38,13 @@ $(function () {
 
     $('#save').click(function () {
         var $saveform = $('#saveform');
-        var input = inputEditor.getValue();
+        var input = $('#input').html();
         var script = scriptEditor.getValue();
         var name = $('#parser-name').val();
         var json = JSON.stringify({
             input: input,
-            script: script
+            script: script,
+            name: name
         });
         $saveform.find('[name="data"]').val(json);
         $saveform.submit();
