@@ -19,7 +19,7 @@ html, body {
 
 .top-right {
     position: absolute;
-    right: 10px;
+    right: 150px;
     top: 18px;
 }
 
@@ -69,7 +69,7 @@ html, body {
 }
 
 .full-height.nocode .block {
-    width: 50%;
+    width: 49%;
 }
 
 .full-height.nocode .scripts.block {
@@ -101,6 +101,7 @@ html, body {
 #input, .script, #output {
     height: 100%;
     outline: none;
+    overflow: auto;
 }
 
 #input, #output {
@@ -110,6 +111,11 @@ html, body {
 
 #output {
     overflow: auto;
+}
+
+#parser-title {
+    padding: 10px;
+    width: 300px;
 }
 
 .CodeMirror {

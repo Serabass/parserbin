@@ -18,8 +18,8 @@ class CreateParsersTable extends Migration
             $table->increments('id');
             $table->string('hash', 64)->unique();
             $table->integer('userId')->nullable();
-            $table->text('input');
-            $table->dateTime('lastActivity')->useCurrent();
+            $table->longText('input');
+            $table->dateTime('lastActivity')->nullable()->useCurrent();
             $table->timestamps();
             $table->softDeletes();
         });

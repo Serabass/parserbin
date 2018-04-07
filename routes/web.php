@@ -11,6 +11,8 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', 'ParserController@create');
-Route::get('/p/{hash}', 'ParserController@show');
+Route::get('/p/{hash}', 'ParserController@show')->name('parser');
 Route::post('/p/save', 'ParserController@update')->name('update-parser');

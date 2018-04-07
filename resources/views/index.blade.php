@@ -7,6 +7,12 @@
     $i = 0;
 @endphp
 @section('content')
+    <div>
+        <label for="parser-title">
+            Title:
+            <input type="text" id="parser-title" placeholder="My awesome parser">
+        </label>
+    </div>
     <div class="input block">
         <h4>Input</h4>
         <pre contenteditable="true" readonly="" id="input">{{ isset($parser) ? $parser->input : 'Hello!' }}</pre>
