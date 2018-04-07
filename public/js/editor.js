@@ -22,7 +22,6 @@ $(function () {
 
     $('#evaluate').click(function (e) {
         e.preventDefault();
-        debugger;
         var input = inputEditor.getValue(),
             scripts = [scriptEditor.getValue()];
 
@@ -33,5 +32,22 @@ $(function () {
         }, input).then(function (output) {
             $('#output').html(output);
         });
+    });
+
+    $('#toggle-code').click(function () {
+        $('.full-height').toggleClass('nocode');
+    });
+
+    $('#save').click(function () {
+        var $saveform = $('#saveform');
+        var input = inputEditor.getValue();
+        var script = scriptEditor.getValue();
+        var name = $('#parser-name').val();
+        var json = JSON.stringify({
+            input: input,
+            script: script
+        });
+        $saveform.find('[name="data"]').val(json);
+        $saveform.submit();
     });
 });

@@ -7,15 +7,6 @@
     $i = 0;
 @endphp
 @section('content')
-
-    <style>
-        .block {
-            float: left;
-            width: 33%;
-            height: 100%;
-        }
-    </style>
-
     <div class="input block">
         <h4>Input</h4>
         <textarea name="input" id="input" cols="50"
@@ -41,6 +32,8 @@
     </div>
     <input id="evaluate" type="button" value="Evaluate"/>
 
-    <script>
-    </script>
+    <form action="{{ route('update-parser') }}" id="saveform" method="post">
+        <input type="hidden" name="data"/>
+        {{ csrf_field() }}
+    </form>
 @endsection

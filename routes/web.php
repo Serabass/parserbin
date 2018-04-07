@@ -13,3 +13,4 @@
 
 Route::get('/', 'ParserController@create');
 Route::get('/p/{hash}', 'ParserController@show');
+Route::post('/p/save', 'ParserController@update')->name('update-parser');
