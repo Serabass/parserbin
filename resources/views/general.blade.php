@@ -5,13 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Parserbin - Parser everything!</title>
 
         <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/bower_components/codemirror/lib/codemirror.js"></script>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <link href="/bower_components/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
+        <link href="/css/editor.css" rel="stylesheet" type="text/css">
+
+        <script src="/js/editor.js"></script>
         <!-- Styles -->
         <style>
             html, body {
@@ -25,16 +30,13 @@
 
             .full-height {
                 height: 100vh;
+                padding: 20px;
             }
 
             .flex-center {
                 align-items: center;
                 display: flex;
                 justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
             }
 
             .top-right {
@@ -67,7 +69,17 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="toolbar">
+            <button id="new">New</button>
+            <button id="save">Save</button>
+            <button id="evaluate">Eval</button>
+            <button id="toggle-code">Toggle Code</button>
+            <label for="auto-update">
+                <input type="checkbox" id="auto-update">
+                Auto update
+            </label>
+        </div>
+        <div class="position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth

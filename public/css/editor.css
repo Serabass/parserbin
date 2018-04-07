@@ -1,0 +1,51 @@
+.toolbar {
+    position: absolute;
+    top: 0;
+    height: 60px;
+    line-height: 60px;
+    left: 0;
+    right: 0;
+    padding: 20px;
+}
+
+.toolbar button {
+    padding: 9px 16px;
+    border: none;
+    box-shadow: 0 0 3px black;
+    margin: 0 6px;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.toolbar button:hover {
+    background: #ced6ff;
+}
+
+.position-ref {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 60px;
+    bottom: 0;
+}
+
+
+#input, .script, #output {
+    height: 100%;
+    outline: none;
+}
+
+.block {
+
+}
+
+.block {
+
+}
+
+#output {
+    overflow: auto;
+}
+
+.CodeMirror { height: 100%; }
