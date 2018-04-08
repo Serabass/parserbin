@@ -16,6 +16,7 @@
 
     <link href="/bower_components/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
     <link href="/css/editor.css" rel="stylesheet" type="text/css">
+    <link href="/css/login.css" rel="stylesheet" type="text/css">
 
     <script src="/js/editor.js"></script>
 </head>
