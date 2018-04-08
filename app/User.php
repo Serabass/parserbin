@@ -5,6 +5,7 @@ namespace Parserbin;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Parserbin\Models\Parser;
 
 class User extends Authenticatable
 {
@@ -29,4 +30,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function parsers()
+    {
+        return $this->hasMany(Parser::class, 'userId');
+    }
 }

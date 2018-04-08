@@ -20,4 +20,7 @@ Route::get('/p/{hash}', function (string $hash) {
 Route::get('/~{hash}', 'ParserController@show')->name('parser');
 Route::post('/p/save', 'ParserController@update')->name('update-parser');
 
-Route::get('/me', 'UserController@me')->name('me');
+Route::get('/me', 'UserController@me')
+    ->name('me')
+    ->middleware(['auth'])
+;
