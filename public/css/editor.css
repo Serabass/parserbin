@@ -71,8 +71,8 @@ html, body {
 
 .toolbar .powered {
     position: fixed;
-    right: 0;
-    top: 149px;
+    right: 449px;
+    top: 0;
     height: 26px;
     line-height: 26px;
     padding: 0px 19px;

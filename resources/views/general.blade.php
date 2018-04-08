@@ -9,6 +9,7 @@
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/codemirror/lib/codemirror.js"></script>
+    <script src="/bower_components/codemirror/mode/javascript/javascript.js"></script>
     <script src="/bower_components/underscore/underscore-min.js"></script>
 
     <!-- Fonts -->
