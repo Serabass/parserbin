@@ -14,5 +14,8 @@
 Auth::routes();
 
 Route::get('/', 'ParserController@create');
-Route::get('/p/{hash}', 'ParserController@show')->name('parser');
+Route::get('/p/{hash}', function (string $hash) {
+    return redirect(route('parser', ['hash' => $hash]));
+})->name('parser.redirect');
+Route::get('/~{hash}', 'ParserController@show')->name('parser');
 Route::post('/p/save', 'ParserController@update')->name('update-parser');

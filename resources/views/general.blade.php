@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Parserbin - Parse everything!</title>
+    <title>{parserbin} - Parse everything!</title>
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/bower_components/codemirror/lib/codemirror.js"></script>
@@ -26,6 +26,9 @@
          src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
 </a>
 <div class="toolbar">
+    <a href="/" class="logo-link">
+        <img src="/images/logo.png" alt="{parserbin}" class="logo" />
+    </a>
     <button id="new">New</button>
     <button id="save">Save</button>
     <button id="evaluate">Eval</button>

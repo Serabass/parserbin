@@ -39,6 +39,12 @@ html, body {
     letter-spacing: .1rem;
     text-decoration: none;
     text-transform: uppercase;
+    display: block;
+    float: left;
+}
+
+.links > a:hover {
+    border-bottom: 2px solid #4d90fe;
 }
 
 .m-b-md {
@@ -54,6 +60,18 @@ html, body {
     right: 0;
     padding: 20px;
     padding-bottom: 0;
+}
+
+img.logo {
+    width: 140px;
+    margin: 0 6px;
+    padding: 0px 16px;
+}
+
+a.logo-link {
+    display: block;
+    float: left;
+    width: 171px;
 }
 
 .full-height {
@@ -116,7 +134,7 @@ html, body {
 }
 
 
-button {
+button, input[type=submit], input[type=button] {
     font-family: 'Arial', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -129,7 +147,7 @@ button {
     /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
-button:hover {
+button:hover, input[type=submit]:hover, input[type=button]:hover {
     /* border: 1px solid #2f5bb7; */
     border: 0px;
     text-shadow: 0 1px rgba(0,0,0,0.3);
