@@ -18,6 +18,8 @@
     <link href="/css/editor.css" rel="stylesheet" type="text/css">
     <link href="/css/login.css" rel="stylesheet" type="text/css">
 
+    <link rel="shortcut icon" href="/images/favicon.png" />
+
     <script src="/js/editor.js"></script>
 </head>
 <body>
@@ -41,7 +43,7 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <a href="{{ url('/home') }}">Home</a>
+                <a href="{{ url('/') }}">Home</a>
             @else
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Register</a>
