@@ -24,7 +24,7 @@
 </head>
 <body>
 <a href="https://github.com/Serabass/parserbin" target="_blank">
-    <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 999;"
+    <img style="position: fixed; top: 0; right: 0; border: 0; z-index: 999;"
          src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub">
 </a>
 <div class="toolbar">
@@ -50,7 +50,11 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <a href="{{ url('/') }}">Home</a>
+                <a href="{{ route('me') }}">Me</a>
+                <a href="#" id="logout">Logout</a>
+                <form action="{{ route('logout') }}" method="POST" id="logout-form">
+                    {{ csrf_field() }}
+                </form>
             @else
                 <a href="{{ route('login') }}">Login</a>
                 <a href="{{ route('register') }}">Register</a>

@@ -76,4 +76,9 @@ $(function () {
         $saveform.find('[name="data"]').val(json);
         $saveform.submit();
     });
+
+    $('#logout').click(function (e) {
+        e.preventDefault();
+        $('#logout-form').submit();
+    });
 });

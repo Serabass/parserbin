@@ -10,7 +10,7 @@
     <div>
         <label for="parser-title">
             Title:
-            <input type="text" id="parser-title" placeholder="My awesome parser">
+            <input type="text" id="parser-title" placeholder="My awesome parser" value="{{ isset($parser) ? $parser->title : '' }}">
         </label>
     </div>
     <div class="input block">
