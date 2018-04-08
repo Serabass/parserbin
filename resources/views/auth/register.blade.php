@@ -8,7 +8,7 @@
             <input type="text" name="name" placeholder="Name" />
             <input type="text" name="email" placeholder="E-Mail" />
             <input type="password" name="password" placeholder="Password" />
-            <input type="submit" name="login" class="login login-submit" value="Register">
+            <input type="submit" class="login login-submit" value="Register">
         </form>
 
         <div class="login-help">
