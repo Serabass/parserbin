@@ -62,6 +62,14 @@ html, body {
     padding-bottom: 0;
 }
 
+.toolbar .buttons, .toolbar .powered {
+    float: left;
+}
+
+.toolbar .powered {
+    padding-left: 140px;
+}
+
 img.logo {
     width: 140px;
     margin: 0 6px;
