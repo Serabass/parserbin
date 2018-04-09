@@ -2,8 +2,8 @@
 
 namespace Parserbin\Http\Controllers\Auth;
 
-use Parserbin\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Parserbin\Http\Controllers\Controller;
 
 class ForgotPasswordController extends Controller
 {

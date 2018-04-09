@@ -26,10 +26,12 @@ class Parser extends Model
         return Auth::check() && $this->userId === Auth::id();
     }
 
-    public static function generateFreeHash() {
+    public static function generateFreeHash()
+    {
         do {
             $hash = str_random();
         } while (self::whereHash($hash)->count() > 0);
+
         return $hash;
     }
 }

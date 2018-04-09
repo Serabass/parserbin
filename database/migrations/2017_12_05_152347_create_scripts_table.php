@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use Parserbin\Models\Script;
 
 class CreateScriptsTable extends Migration
@@ -34,7 +34,6 @@ class CreateScriptsTable extends Migration
         $script->parser()->associate(\Parserbin\Models\Parser::find(1));
         $script->language()->associate(\Parserbin\Models\Language::default());
         $script->save();
-
     }
 
     /**

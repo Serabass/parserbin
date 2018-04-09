@@ -2,19 +2,18 @@
 
 namespace Parserbin\Http\Sections;
 
-use Illuminate\Support\Facades\URL;
-use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
-use SleepingOwl\Admin\Contracts\Form\FormInterface;
-use SleepingOwl\Admin\Section;
-
 use AdminColumn;
 use AdminColumnEditable;
 use AdminColumnFilter;
 use AdminDisplay;
 use AdminFormElement;
+use Illuminate\Support\Facades\URL;
+use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
+use SleepingOwl\Admin\Contracts\Form\FormInterface;
+use SleepingOwl\Admin\Section;
 
 /**
- * Class Parser
+ * Class Parser.
  *
  * @property \Parserbin\Models\Parser $model
  *
@@ -74,7 +73,6 @@ class Parser extends Section
             ->setPlacement('panel.heading');
 
         return $display;
-
     }
 
     /**
@@ -89,15 +87,15 @@ class Parser extends Section
             AdminFormElement::text('title', 'Название'),
             $id ? AdminFormElement::textaddon('hash', 'Хеш')
                 ->required(true)
-                ->setAddon(URL::to('/p/') . '/') : null,
+                ->setAddon(URL::to('/p/').'/') : null,
 
             AdminFormElement::selectajax('userId', 'Пользователь')
                 ->setModelForOptions(\Parserbin\User::class),
 
-            AdminFormElement::textarea('input', 'Входящие данные')
+            AdminFormElement::textarea('input', 'Входящие данные'),
         ]);
-        return $form;
 
+        return $form;
     }
 
     /**

@@ -2,8 +2,8 @@
 
 namespace Parserbin\Http\Controllers\Auth;
 
-use Parserbin\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Parserbin\Http\Controllers\Controller;
 
 class ResetPasswordController extends Controller
 {
