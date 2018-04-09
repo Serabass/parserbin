@@ -3,3 +3,9 @@ php:
   - '7.0'
   - hhvm # on Trusty only
   - nightly
+
+install:
+  - composer install --prefer-dist --no-suggest
+  
+script:
+  - php artisan key:generate
