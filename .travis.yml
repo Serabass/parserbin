@@ -14,12 +14,10 @@ services:
   - mysql
 
 before_script:
-  - cp .env.example .env
-  - php artisan key:generate
   - mysql -e 'create database if not exists parserbin;'
   - travis_retry composer self-update
   - travis_retry composer install --no-interaction
   
 script:
-  # - vendor/bin/phpunit
+  - vendor/bin/phpunit
   - echo 123
