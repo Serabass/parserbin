@@ -2,18 +2,16 @@
 
 namespace Parserbin\Http\Sections;
 
+use AdminColumn;
+use AdminColumnEditable;
+use AdminDisplay;
+use AdminFormElement;
 use SleepingOwl\Admin\Contracts\Display\DisplayInterface;
 use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
 
-use AdminColumn;
-use AdminColumnEditable;
-use AdminColumnFilter;
-use AdminDisplay;
-use AdminFormElement;
-
 /**
- * Class Script
+ * Class Script.
  *
  * @property \Parserbin\Models\Script $model
  *
@@ -72,8 +70,9 @@ class Script extends Section
             AdminFormElement::selectajax('parserId', 'Парсер')
                 ->setModelForOptions(\Parserbin\Models\Parser::class),
             AdminFormElement::selectajax('languageId', 'Язык')
-                ->setModelForOptions(\Parserbin\Models\Language::class)
+                ->setModelForOptions(\Parserbin\Models\Language::class),
         ]);
+
         return $form;
     }
 

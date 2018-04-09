@@ -65,9 +65,9 @@ return [
     //                'title'    => 'Blog',
     //                'priority' => 100,
     //                'model'    => \App\Blog::class
-	//		      ));
+    //		      ));
     //
-	//		      $page->addPage(\App\Blog::class);
+    //		      $page->addPage(\App\Blog::class);
     //	      }),
     //
     //        // or

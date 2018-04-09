@@ -3,9 +3,6 @@
 namespace Parserbin\Console\Commands;
 
 use Illuminate\Console\Command;
-use Parserbin\Models\Language;
-use Parserbin\Models\Parser;
-use Parserbin\Models\Script;
 use Parserbin\User;
 
 class SandboxCommand extends Command
@@ -42,8 +39,8 @@ class SandboxCommand extends Command
     public function handle()
     {
         User::create([
-            'name' => 'Serabass',
-            'email' => 'is_everything@mail.ru',
+            'name'     => 'Serabass',
+            'email'    => 'is_everything@mail.ru',
             'password' => bcrypt('secret'),
         ]);
     }

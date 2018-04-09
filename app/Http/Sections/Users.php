@@ -7,7 +7,7 @@ use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
 
 /**
- * Class Users
+ * Class Users.
  *
  * @property \Parserbin\User $model
  *

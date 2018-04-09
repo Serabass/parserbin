@@ -7,7 +7,7 @@ use SleepingOwl\Admin\Contracts\Form\FormInterface;
 use SleepingOwl\Admin\Section;
 
 /**
- * Class Language
+ * Class Language.
  *
  * @property \Parserbin\Models\Language $model
  *

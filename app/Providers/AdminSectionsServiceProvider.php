@@ -4,21 +4,19 @@ namespace Parserbin\Providers;
 
 use AdminNavigation;
 use KodiCMS\Assets\Facades\PackageManager;
-use Parserbin\Models\Parser;
 use SleepingOwl\Admin\Contracts\Widgets\WidgetsRegistryInterface;
 use SleepingOwl\Admin\Navigation\Page;
 use SleepingOwl\Admin\Providers\AdminSectionsServiceProvider as ServiceProvider;
 
 class AdminSectionsServiceProvider extends ServiceProvider
 {
-
     /**
      * @var array
      */
     protected $sections = [
-        \Parserbin\User::class => 'Parserbin\Http\Sections\Users',
-        \Parserbin\Models\Parser::class => 'Parserbin\Http\Sections\Parser',
-        \Parserbin\Models\Script::class => 'Parserbin\Http\Sections\Script',
+        \Parserbin\User::class            => 'Parserbin\Http\Sections\Users',
+        \Parserbin\Models\Parser::class   => 'Parserbin\Http\Sections\Parser',
+        \Parserbin\Models\Script::class   => 'Parserbin\Http\Sections\Script',
         \Parserbin\Models\Language::class => 'Parserbin\Http\Sections\Language',
     ];
 
@@ -29,7 +27,7 @@ class AdminSectionsServiceProvider extends ServiceProvider
      */
     public function boot(\SleepingOwl\Admin\Admin $admin)
     {
-    	//
+        //
 
         parent::boot($admin);
 
@@ -37,7 +35,6 @@ class AdminSectionsServiceProvider extends ServiceProvider
         $this->registerNavigation();
         $this->registerMediaPackages();
         $this->app->call([$this, 'registerViews']);
-
     }
 
     private function registerNavigation()
@@ -64,17 +61,18 @@ class AdminSectionsServiceProvider extends ServiceProvider
     private function registerNRoutes()
     {
         /**
-         * @var \Illuminate\Routing\Router $router
+         * @var \Illuminate\Routing\Router
          */
         $router = $this->app['router'];
         $router->group([
-            'prefix' => config('sleeping_owl.url_prefix'),
-            'middleware' => config('sleeping_owl.middleware')], function ($router) {
-            $router->get('', ['as' => 'admin.dashboard', function () {
-                $content = 'Define your dashboard here.';
-                return AdminSection::view($content, 'Dashboard');
-            }]);
-        });
+            'prefix'               => config('sleeping_owl.url_prefix'),
+            'middleware'           => config('sleeping_owl.middleware'), ], function ($router) {
+                $router->get('', ['as' => 'admin.dashboard', function () {
+                    $content = 'Define your dashboard here.';
+
+                    return AdminSection::view($content, 'Dashboard');
+                }]);
+            });
     }
 
     private function registerMediaPackages()
@@ -92,5 +90,4 @@ class AdminSectionsServiceProvider extends ServiceProvider
         //     $widgetsRegistry->registerWidget($widget);
         // }
     }
-
 }
