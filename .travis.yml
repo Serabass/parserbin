@@ -1,11 +1,22 @@
 language: php
-php:
-  - '7.2'
-  - hhvm # on Trusty only
-  - nightly
 
-install:
-  - composer install --prefer-dist --no-suggest
+php:
+  - 7
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: hhvm
+
+sudo: false
+
+services:
+  - mysql
+
+before_script:
+  - mysql -e 'create database if not exists parserbin;'
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction
   
 script:
-  - php artisan key:generate
+  - vendor/bin/phpunit
