@@ -51,7 +51,8 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <a href="{{ route('me') }}">Me</a>
+                {{--<a href="{{ route('me') }}">Me</a>--}}
+                <a href="#">Me<sup>(coming soon)</sup></a>
                 <a href="#" id="logout">Logout</a>
                 <form action="{{ route('logout') }}" method="POST" id="logout-form">
                     {{ csrf_field() }}
