@@ -65,8 +65,8 @@ class AdminSectionsServiceProvider extends ServiceProvider
          */
         $router = $this->app['router'];
         $router->group([
-            'prefix'               => config('sleeping_owl.url_prefix'),
-            'middleware'           => config('sleeping_owl.middleware'), ], function ($router) {
+            'prefix'                   => config('sleeping_owl.url_prefix'),
+            'middleware'               => config('sleeping_owl.middleware'), ], function ($router) {
                 $router->get('', ['as' => 'admin.dashboard', function () {
                     $content = 'Define your dashboard here.';
 
