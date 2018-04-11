@@ -11,6 +11,8 @@
             <input type="submit" class="login login-submit" value="Register">
         </form>
 
+        @include('auth.social-icons')
+        
         <div class="login-help">
             <a href="{{ route('login') }}">I already have an account</a>
         </div>
