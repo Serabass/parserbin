@@ -13,7 +13,7 @@
         @include('auth.social-icons')
 
         <div class="login-help">
-            <a href="{{ route('register') }}">Register</a> • <a href="/password/reset">Forgot Password</a>
+            <a href="{{ route('register') }}">Register</a> {{-- • <a href="/password/reset">Forgot Password</a> --}}
         </div>
     </div>
 
