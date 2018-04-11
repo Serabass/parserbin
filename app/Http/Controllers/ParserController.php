@@ -20,7 +20,7 @@ class ParserController extends Controller
         $parser = Parser::whereHash($hash)->first();
 
         return view('index', [
-            'parser' => $parser,
+            'parser'     => $parser,
             'parserPage' => true
         ]);
     }
