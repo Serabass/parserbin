@@ -21,7 +21,7 @@ class ParserController extends Controller
 
         return view('index', [
             'parser'     => $parser,
-            'parserPage' => true
+            'parserPage' => true,
         ]);
     }
 
