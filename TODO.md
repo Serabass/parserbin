@@ -6,3 +6,4 @@
 4. Maybe add `Coffeescript` support
 5. Make mobile version
 6. Complete `/forgot` page
+7. Maybe add Embed parser feature
