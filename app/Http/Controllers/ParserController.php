@@ -12,7 +12,7 @@ class ParserController extends Controller
 {
     public function create()
     {
-        return view('index');
+        return view('index', ['parserPage' => true]);
     }
 
     public function show($hash)
@@ -21,6 +21,7 @@ class ParserController extends Controller
 
         return view('index', [
             'parser' => $parser,
+            'parserPage' => true
         ]);
     }
 
