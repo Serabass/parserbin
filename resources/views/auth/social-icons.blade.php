@@ -12,4 +12,7 @@
     <a href="#" title="Google+">
       <i class="fa fa-google-plus-g"></i>
     </a>
+    <a href="#" title="Twitter">
+      <i class="fa fa-twitter"></i>
+    </a>
 </ul>
