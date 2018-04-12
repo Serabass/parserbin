@@ -1,0 +1,106 @@
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 84px;
+}
+
+.links {
+  width: 280px;
+  > a {
+    color: #636b6f;
+    padding: 0 25px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    float: left;
+    &:hover {
+      border-bottom: 2px solid #4d90fe;
+    }
+  }
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  height: 60px;
+  line-height: 60px;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  padding-bottom: 0;
+  .buttons {
+    float: left;
+  }
+  .powered {
+    position: fixed;
+    right: 449px;
+    top: 0;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 19px;
+    text-align: right;
+    background: #4d90fe;
+    color: white;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 0px 0px 2px 2px;
+    a {
+      color: white;
+    }
+  }
+  button {
+    padding: 9px 16px;
+    margin: 0 6px;
+    cursor: pointer;
+  }
+}
+
+img.logo {
+  width: 140px;
+  margin: 0 6px;
+  padding: 0px 6px;
+}
+
+a.logo-link {
+  display: block;
+  float: left;
+  width: 171px;
+}
+
+.position-ref {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 80px;
+  bottom: 70px;
+}
+
+#input, .script, #output {
+  height: 100%;
+  outline: none;
+  overflow: auto;
+}
+
+#input, #output {
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+}
+
+#output {
+  overflow: auto;
+}
+
+#parser-title {
+  padding: 10px;
+  width: 300px;
+}
+
+.CodeMirror {
+  height: 100%;
+}
+

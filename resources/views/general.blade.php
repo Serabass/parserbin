@@ -22,8 +22,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <link href="/bower_components/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
-    <link href="/css/editor.css" rel="stylesheet" type="text/css">
-    <link href="/css/login.css" rel="stylesheet" type="text/css">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
     <link href="/bower_components/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
 
     <link rel="shortcut icon" href="/images/favicon.png"/>
@@ -43,12 +42,7 @@
         <button id="new">New</button>
         @if ($parserPage)
             <button id="save">Save</button>
-            <button id="evaluate">Eval</button>
             <button id="toggle-code">Toggle Code</button>
-            <label for="auto-update">
-                <input type="checkbox" id="auto-update">
-                Auto update
-            </label>
         @endif
     </div>
     <div class="powered">

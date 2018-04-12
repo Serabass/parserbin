@@ -24,6 +24,10 @@ Route::get('/me', 'UserController@me')
     ->name('me')
     ->middleware(['auth']);
 
+Route::get('/me/parsers', 'UserController@parsers')
+    ->name('me.parsers')
+    ->middleware(['auth']);
+
 Route::group(['prefix' => 'login', 'namespace' => 'Auth'], function () {
     Route::get('github', 'LoginController@redirectToProvider')->name('login-social.github');
     Route::get('github/callback', 'LoginController@handleProviderCallback');

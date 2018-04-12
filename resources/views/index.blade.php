@@ -10,7 +10,8 @@
     <div>
         <label for="parser-title">
             Title:
-            <input type="text" id="parser-title" placeholder="My awesome parser" value="{{ isset($parser) ? $parser->title : '' }}">
+            <input type="text" id="parser-title" placeholder="My awesome parser"
+                   value="{{ isset($parser) ? $parser->title : '' }}">
         </label>
     </div>
     <div class="input block">
@@ -32,7 +33,16 @@
 
     </div>
     <div class="output block">
-        <h4>Output</h4>
+        <h4>Output
+            <span class="push-right">
+                <button id="evaluate">Evaluate</button>
+                <label for="auto-update">
+                    <input type="checkbox" id="auto-update">
+                    Auto update
+                </label>
+            </span>
+        </h4>
+
         <pre contenteditable="true" id="output" readonly=""></pre>
     </div>
     <form action="{{ route('update-parser') }}" id="saveform" method="post">

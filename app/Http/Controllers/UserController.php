@@ -9,9 +9,18 @@ class UserController extends Controller
 {
     public function me()
     {
-        $me = User::with('parsers')->whereId(Auth::id())->first();
+        $me = User::whereId(Auth::id())->first();
 
         return view('user.me', [
+            'me' => $me,
+        ]);
+    }
+
+    public function parsers()
+    {
+        $me = User::with('parsers')->whereId(Auth::id())->first();
+
+        return view('user.parsers', [
             'me' => $me,
         ]);
     }
