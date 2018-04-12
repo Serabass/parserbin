@@ -12,7 +12,7 @@ class UserController extends Controller
         $me = User::with('parsers')->whereId(Auth::id())->first();
 
         return view('user.me', [
-            'me' => $me
+            'me' => $me,
         ]);
     }
 }
