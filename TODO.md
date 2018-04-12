@@ -7,6 +7,7 @@
 5. Make mobile version
 6. Complete `/forgot` page
 7. Maybe add Embed parser feature
+8. Maybe add `host script on Github` feature
 
 `/me/parsers` page must contain a list with all user's parsers
 
