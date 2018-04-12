@@ -1,6 +1,6 @@
 <ul class="social-icons">
     <li>
-        <a href="{{ route('login-social.github') }}" title="Github">
+        <a href="{{ route('login-social.github') }}" title="Sign in with Github">
             <i class="fab fa-github"></i>
         </a>
     </li>
