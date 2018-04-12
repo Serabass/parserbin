@@ -5,9 +5,9 @@
         <h1>Log In</h1><br>
         <form action="{{ route('login') }}" method="POST">
             {{ csrf_field() }}
-            <input type="text" name="email" placeholder="E-Mail">
+            <input type="text" name="email" placeholder="E-Mail or Username">
             <input type="password" name="password" placeholder="Password">
-            <input type="submit" class="login login-submit" value="login">
+            <input type="submit" class="login login-submit" value="Log In">
         </form>
 
         @include('auth.social-icons')

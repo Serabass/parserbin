@@ -77,3 +77,19 @@
   text-align: center;
   font-size: 12px;
 }
+
+.social-icons {
+  list-style: none;
+  font-size: 38px;
+  margin: 20px 0px;
+  display: block;
+  height: 45px;
+  padding: 0;
+}
+
+.social-icons li {
+  display: block;
+  float: left;
+  width: 54px;
+  text-align: center;
+}

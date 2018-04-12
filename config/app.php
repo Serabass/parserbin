@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\URL;
+
 return [
 
     /*
@@ -227,5 +229,4 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
 
     ],
-
 ];

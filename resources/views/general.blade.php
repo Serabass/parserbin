@@ -24,6 +24,7 @@
     <link href="/bower_components/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
     <link href="/css/editor.css" rel="stylesheet" type="text/css">
     <link href="/css/login.css" rel="stylesheet" type="text/css">
+    <link href="/bower_components/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
 
     <link rel="shortcut icon" href="/images/favicon.png"/>
 

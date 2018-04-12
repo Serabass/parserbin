@@ -10,7 +10,9 @@ class UserController extends Controller
     public function me()
     {
         $me = User::with('parsers')->whereId(Auth::id())->first();
-        dump($me->parsers);
-        die;
+
+        return view('user.me', [
+            'me' => $me
+        ]);
     }
 }

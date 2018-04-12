@@ -23,3 +23,9 @@ Route::post('/p/save', 'ParserController@update')->name('update-parser');
 Route::get('/me', 'UserController@me')
     ->name('me')
     ->middleware(['auth']);
+
+
+Route::group(['prefix' => 'login', 'namespace' => 'Auth'], function () {
+    Route::get('github', 'LoginController@redirectToProvider')->name('login-social.github');
+    Route::get('github/callback', 'LoginController@handleProviderCallback');
+});
