@@ -36,8 +36,8 @@ return [
     ],
 
     'github' => [
-        'client_id' => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
+        'client_id'     => env('GITHUB_CLIENT_ID'),         // Your GitHub Client ID
         'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
-        'redirect' => 'http://parserbin.serabass.net/login/github/callback',
-    ]
+        'redirect'      => 'http://parserbin.serabass.net/login/github/callback',
+    ],
 ];

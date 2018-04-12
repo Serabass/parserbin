@@ -40,7 +40,6 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-
     /**
      * Redirect the user to the GitHub authentication page.
      *
@@ -58,7 +57,7 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();;
+        $user = Socialite::driver('github')->user();
 
         $u = User::where('email', $user->getEmail())
             ->where('name', $user->getNickname())
