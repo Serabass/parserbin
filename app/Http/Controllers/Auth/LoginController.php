@@ -3,8 +3,10 @@
 namespace Parserbin\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Parserbin\Http\Controllers\Controller;
+use Parserbin\User;
 
 class LoginController extends Controller
 {
@@ -56,8 +58,22 @@ class LoginController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('github')->user();
+        $user = Socialite::driver('github')->user();;
 
-        // $user->token;
+        $u = User::where('email', $user->getEmail())
+            ->where('name', $user->getNickname())
+            ->first();
+
+        if (!$u) {
+            $u = new User();
+            $u->email = $user->getEmail();
+            $u->name = $user->getNickname();
+            $u->password = bcrypt(str_random());
+            $u->save();
+        }
+
+        Auth::login($u);
+
+        return redirect('/');
     }
 }
