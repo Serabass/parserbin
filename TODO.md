@@ -2,7 +2,7 @@
 
 1. Add `Socialite` support
 2. Complete `/me`
-3. Add `/{user}/{parser}` support
+3. Add `/{user}/{hash}` support
 4. Maybe add `Coffeescript` support
 5. Make mobile version
 6. Complete `/forgot` page
