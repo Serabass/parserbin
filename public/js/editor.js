@@ -1,9 +1,10 @@
 $(function () {
     function applyEditor(element) {
+        var mode = $(element).data('mode');
         return CodeMirror.fromTextArea(element, {
             lineNumbers: true,
             lineWrapping: true,
-            mode:  "javascript",
+            mode:  mode,
             extraKeys: {
                 "Ctrl-Q": function (cm) {
                     cm.foldCode(cm.getCursor());
@@ -15,26 +16,39 @@ $(function () {
     }
 
     function evalScript() {
-        var input = $('#input').text(),
-            scripts = [scriptEditor.getValue()];
+        var scriptElements = $('.codemirror.script');
+        var input = $('#input').data('editor').getValue(),
+            scripts = scriptElements.map(function () {
+                return $(this).data('editor').getValue();
+            }).toArray();
 
         scripts.reduce(function (val, script) {
             var fn = new Function('input', script);
             val = Promise.resolve(val);
             return val.then(fn);
         }, input).then(function (output) {
-            $('#output').html(output);
+            var result;
+            switch (typeof output) {
+                case 'number':
+                case 'string':
+                    result = output;
+                    break;
+                default:
+                    result = JSON.stringify(output, null, 4);
+            }
+            $('#output').html(result);
         });
     }
 
-    $('textarea.script').each(function () {
-        window.scriptEditor = applyEditor(this);
-        scriptEditor.on("change", _.debounce(function() {
+    $('textarea.codemirror').each(function () {
+        var editor = applyEditor(this);
+        editor.on("change", _.debounce(function() {
             if ( ! $('#auto-update').prop('checked'))
                 return;
 
             evalScript();
         }, 500));
+        $(this).data('editor', editor);
     });
 
     $('#evaluate').click(function (e) {
@@ -65,8 +79,8 @@ $(function () {
 
     $('#save').click(function () {
         var $saveform = $('#saveform');
-        var input = $('#input').html();
-        var script = scriptEditor.getValue();
+        var input = $('#input').data('editor').getValue();
+        var script = $('.codemirror.script').data('editor').getValue();
         var title = $('#parser-title').val();
         var json = JSON.stringify({
             input: input,
