@@ -43,7 +43,7 @@
             </span>
         </h4>
 
-        <pre contenteditable="true" id="output" readonly=""></pre>
+        <textarea id="output" name="script" class="codemirror" data-mode="plain"></textarea>
     </div>
     <form action="{{ route('update-parser') }}" id="saveform" method="post">
         <input type="hidden" name="data"/>

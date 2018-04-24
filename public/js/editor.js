@@ -36,7 +36,7 @@ $(function () {
                 default:
                     result = JSON.stringify(output, null, 4);
             }
-            $('#output').html(result);
+            $('#output').data('editor').setValue(result);
         });
     }
 
