@@ -13,7 +13,7 @@
 11. Try https://github.com/Microsoft/monaco-editor instead of CodeMirror
 12. **[+]** Add `Last Execution Time` block
 13. Add `Fork` feature by adding `parent_id` field to `parsers`
-14. Add `indexable` field to parser. This field must add `<meta name="robots" content="noindex, nofollow" />` if `value` is `false` and `index` if `true`
+14. Add `indexable` field to parser. This field must add `<meta name="robots" content="noindex, nofollow" />` if `value === false` and `index` if `true`
 
 `/me/parsers` page must contain a list with all user's parsers
 
