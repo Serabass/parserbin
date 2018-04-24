@@ -8,7 +8,7 @@
 6. Complete `/forgot` page
 7. Maybe add Embed parser feature
 8. Maybe add `host script on Github` feature
-9. Style toolbar like `.login-card` (with bg and box-shadow)
+9. **[+]** Style toolbar like `.login-card` (with bg and box-shadow)
 10. Redirect to `/` when `/~{hash}` is not exists
 11. Try https://github.com/Microsoft/monaco-editor instead of CodeMirror
 12. **[+]** Add `Last Execution Time` block
