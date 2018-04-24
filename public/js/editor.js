@@ -43,7 +43,7 @@ $(function () {
         var execTime = Date.now() - startTime;
 
         if (execTime < 1) {
-            execTime = ' < 1';
+            execTime = '<1';
         }
 
         execTimeSpan.text('[Last execution time:' + execTime + 'ms]');
