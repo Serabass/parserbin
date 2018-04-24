@@ -16,6 +16,8 @@ $(function () {
     }
 
     function evalScript() {
+        var execTimeSpan = $('#execTime');
+        var startTime = Date.now();
         var scriptElements = $('.codemirror.script');
         var input = $('#input').data('editor').getValue(),
             scripts = scriptElements.map(function () {
@@ -38,6 +40,13 @@ $(function () {
             }
             $('#output').data('editor').setValue(result);
         });
+        var execTime = Date.now() - startTime;
+
+        if (execTime < 1) {
+            execTime = ' < 1';
+        }
+
+        execTimeSpan.text('[Last execution time:' + execTime + 'ms]');
     }
 
     $('textarea.codemirror').each(function () {
