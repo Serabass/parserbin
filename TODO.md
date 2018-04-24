@@ -11,7 +11,7 @@
 9. Style toolbar like `.login-card` (with bg and box-shadow)
 10. Redirect to `/` when `/~{hash}` is not exists
 11. Try https://github.com/Microsoft/monaco-editor instead of CodeMirror
-+12. Add `Last Execution Time` block
+12. Add `Last Execution Time` block [+]
 13. Add `Fork` feature by adding `parent_id` field to `parsers`
 
 `/me/parsers` page must contain a list with all user's parsers
