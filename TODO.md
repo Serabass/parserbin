@@ -14,6 +14,7 @@
 12. **[+]** Add `Last Execution Time` block
 13. Add `Fork` feature by adding `parent_id` field to `parsers`
 14. Add `indexable` field to parser. This field must add `<meta name="robots" content="noindex, nofollow" />` if `value === false` and `index` if `true`
+15. Add `last_access_at` field. It needed to remove dead parsers (e.g. not accessed in 1 year).
 
 `/me/parsers` page must contain a list with all user's parsers
 
