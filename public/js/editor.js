@@ -1,10 +1,24 @@
 $(function () {
+
+    function detectHash() {
+        var regex = /^#(.+?)$/,
+            match;
+        if (location.pathname === '/') {
+            if (match = location.hash.match(regex)) {
+                var str = match[1];
+                var data = decodeURI(str);
+                $('#input').data('editor').setValue(data);
+                location.hash = '';
+            }
+        }
+    }
+
     function applyEditor(element) {
         var mode = $(element).data('mode');
         return CodeMirror.fromTextArea(element, {
             lineNumbers: true,
             lineWrapping: true,
-            mode:  mode,
+            mode: mode,
             extraKeys: {
                 "Ctrl-Q": function (cm) {
                     cm.foldCode(cm.getCursor());
@@ -51,8 +65,8 @@ $(function () {
 
     $('textarea.codemirror').each(function () {
         var editor = applyEditor(this);
-        editor.on("change", _.debounce(function() {
-            if ( ! $('#auto-update').prop('checked'))
+        editor.on("change", _.debounce(function () {
+            if (!$('#auto-update').prop('checked'))
                 return;
 
             evalScript();
@@ -75,8 +89,8 @@ $(function () {
         }
     });
 
-    $('#input').on("keyup", _.debounce(function() {
-        if ( ! $('#auto-update').prop('checked'))
+    $('#input').on("keyup", _.debounce(function () {
+        if (!$('#auto-update').prop('checked'))
             return;
 
         evalScript();
@@ -104,4 +118,17 @@ $(function () {
         e.preventDefault();
         $('#logout-form').submit();
     });
+
+    $('#bookmarklet').click(function (e) {
+        e.preventDefault();
+        alert('Save this link as bookmarklet in your browser (just drag to the toolbar) ' +
+            'for creating parsers on-the-fly with selected text of any page');
+    }).mousedown(function () {
+        this.innerHTML = 'Parse it!'
+    }).mouseup(function () {
+        this.innerHTML = 'Save bookmarklet'
+    });
+
+    detectHash();
+
 });

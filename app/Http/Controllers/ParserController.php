@@ -10,7 +10,7 @@ use Parserbin\Models\Script;
 
 class ParserController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
         return view('index', ['parserPage' => true]);
     }

@@ -4,7 +4,7 @@
     }
 @endphp
 
-<!doctype html>
+        <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -23,7 +23,8 @@
 
     <link href="/bower_components/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
     <link href="/css/styles.css" rel="stylesheet" type="text/css">
-    <link href="/bower_components/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+    <link href="/bower_components/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet"
+          type="text/css">
 
     <link rel="shortcut icon" href="/images/favicon.png"/>
 
@@ -43,6 +44,9 @@
         @if ($parserPage)
             <button id="save">Save</button>
             <button id="toggle-code">Toggle Code</button>
+            <a id="bookmarklet"
+               href="javascript:~function () {var text = getSelection().toString(); if (!text) return; window.open('{{\Illuminate\Support\Facades\URL::to('')}}#' + encodeURI(text))}();"
+            >Save bookmarklet</a>
         @endif
     </div>
     <div class="powered">
