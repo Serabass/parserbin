@@ -9,12 +9,14 @@
 7. Maybe add Embed parser feature
 8. Maybe add `host script on Github` feature
 9. **[+]** Style toolbar like `.login-card` (with bg and box-shadow)
-10. Redirect to `/` when `/~{hash}` is not exists
+10. Redirect to `/` when `/~{hash}` is not exists (or return 404)
 11. Try https://github.com/Microsoft/monaco-editor instead of CodeMirror
 12. **[+]** Add `Last Execution Time` block
 13. Add `Fork` feature by adding `parent_id` field to `parsers`
 14. Add `indexable` field to parser. This field must add `<meta name="robots" content="noindex, nofollow" />` if `value === false` and `index` if `true`
 15. Add `last_access_at` field. It needed to remove dead parsers (e.g. not accessed in 1 year).
+16. Move model interacting to Services and write tests for them
+17. 
 
 `/me/parsers` page must contain a list with all user's parsers
 
