@@ -9,6 +9,7 @@ $(function () {
                 var data = decodeURI(str);
                 $('#input').data('editor').setValue(data);
                 location.hash = '';
+                evalScript();
             }
         }
     }
