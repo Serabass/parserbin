@@ -120,15 +120,18 @@ $(function () {
         $('#logout-form').submit();
     });
 
-    $('#bookmarklet').click(function (e) {
-        e.preventDefault();
-        alert('Save this link as bookmarklet in your browser (just drag to the toolbar) ' +
-            'for creating parsers on-the-fly with selected text of any page');
-    }).mousedown(function () {
-        this.innerHTML = 'Parse it!'
-    }).mouseup(function () {
-        this.innerHTML = 'Save bookmarklet'
-    });
+    $('#bookmarklet')
+        .click(function (e) {
+            e.preventDefault();
+            alert('Save this link as bookmarklet in your browser (just drag to the toolbar) ' +
+                'for creating parsers on-the-fly with selected text of any page');
+        })
+        .mousedown(function () {
+            this.innerHTML = 'Parse it!'
+        })
+        .mouseup(function () {
+            this.innerHTML = 'Save bookmarklet'
+        });
 
     detectHash();
 
