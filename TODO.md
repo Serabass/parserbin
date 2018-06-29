@@ -16,7 +16,23 @@
 14. Add `indexable` field to parser. This field must add `<meta name="robots" content="noindex, nofollow" />` if `value === false` and `index` if `true`
 15. Add `last_access_at` field. It needed to remove dead parsers (e.g. not accessed in 1 year).
 16. Move model interacting to Services and write tests for them
-17. 
+17. Add a feature to use a parser in another parser as shared function. Then I can write like this:
+```
+// First parser with id /~HylvDLOH2vjk0aKK
+return input.replace(input.match(/(\d+)\.(\d+)\.(\d+)(?:.+?(?:(\d+):(\d+)))?/), "$3-$2-$1"); // Reformat a date
+```
+
+```
+// Second parser
+
+var mySharedParser = @<~HylvDLOH2vjk0aKK>;
+
+return mySharedParser(input);
+```
+
+Async loading will be executed before every Evaluate the script and then **@<>** block will be replaced by **function-block**
+
+
 
 `/me/parsers` page must contain a list with all user's parsers
 
