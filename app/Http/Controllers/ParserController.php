@@ -2,6 +2,7 @@
 
 namespace Parserbin\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Parserbin\Models\Language;
@@ -17,10 +18,16 @@ class ParserController extends Controller
 
     public function show($hash)
     {
+        /**
+         * @var $parser Parser
+         */
         $parser = Parser::whereHash($hash)->first();
 
+        $parser->lastActivity = Carbon::now();
+        $parser->save();
+
         return view('index', [
-            'parser'     => $parser,
+            'parser' => $parser,
             'parserPage' => true,
         ]);
     }
@@ -44,6 +51,26 @@ class ParserController extends Controller
 
         return redirect(route('parser', [
             'hash' => $parser->hash,
+        ]));
+    }
+
+    public function fork($hash)
+    {
+        /**
+         * @var $parser Parser
+         */
+        $parser = Parser::whereHash($hash)->first();
+
+        /**
+         * @var $new Parser
+         */
+        $new = $parser->replicate();
+        $new->hash = Parser::generateFreeHash();
+        $new->parentId = $parser->id;
+        $new->push();
+
+        return redirect(route('parser', [
+            'hash' => $new->hash
         ]));
     }
 }

@@ -12,9 +12,9 @@
 10. Redirect to `/` when `/~{hash}` is not exists (or return 404)
 11. Try https://github.com/Microsoft/monaco-editor instead of CodeMirror
 12. **[+]** Add `Last Execution Time` block
-13. Add `Fork` feature by adding `parent_id` field to `parsers`
-14. Add `indexable` field to parser. This field must add `<meta name="robots" content="noindex, nofollow" />` if `value === false` and `index` if `true`
-15. Add `last_access_at` field. It needed to remove dead parsers (e.g. not accessed in 1 year).
+13. **[+]** Add `Fork` feature by adding `parent_id` field to `parsers`
+14. **[+]** Add `indexable` field to parser. This field must add `<meta name="robots" content="noindex, nofollow" />` if `value === false` and `index` if `true`
+15. **[+]** Add `last_access_at` field. It needed to remove dead parsers (e.g. not accessed in 1 year).
 16. Move model interacting to Services and write tests for them
 17. Add `type` select that contains: `Line by line`, `Whole file`. First will work as `input` will equal an every line in input string (lines.map), but in case of Second input will equal an entire input string. 
 17. Add a feature to use a parser in another parser as shared function. Then I can write like this:

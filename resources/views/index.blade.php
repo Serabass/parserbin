@@ -13,6 +13,17 @@
             <input type="text" id="parser-title" placeholder="My awesome parser"
                    value="{{ isset($parser) ? $parser->title : '' }}">
         </label>
+
+        @if (isset($parser) && $parser->isChild())
+            Forked from: <a href="{{route('parser', ['hash' => $parser->parent->hash])}}">
+                {{ $parser->parent->hash }}
+            </a>
+
+        @endif
+
+        @if (isset($parser) && $parser->hasForks())
+            Forks: {{ $parser->forks->count() }}
+        @endif
     </div>
     <div class="input block">
         <h4>Input</h4>

@@ -2,6 +2,10 @@
     if (!isset($parserPage)) {
         $parserPage = false;
     }
+
+/**
+ * @var $parser \Parserbin\Models\Parser
+ */
 @endphp
 
         <!doctype html>
@@ -10,7 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="robots" content="{{ $parserPage ? ($parser->indexable ? 'index' : 'noindex') : 'noindex' }}, follow" />
     <title>{parserbin} - Parse everything!</title>
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -43,6 +47,7 @@
         <button id="new">New</button>
         @if ($parserPage)
             <button id="save">Save</button>
+            <button id="fork">Fork</button>
             <button id="toggle-code">Toggle Code</button>
             <a id="bookmarklet"
                href="javascript:~function () {var text = getSelection().toString(); if (!text) return; window.open('{{\Illuminate\Support\Facades\URL::to('')}}#' + encodeURI(text))}();"

@@ -101,6 +101,10 @@ $(function () {
         location.href = '/';
     });
 
+    $('#fork').click(function () {
+        location.href = '/fork' + location.pathname;
+    });
+
     $('#save').click(function () {
         var $saveform = $('#saveform');
         var input = $('#input').data('editor').getValue();
