@@ -1,6 +1,14 @@
-@extends('general')
+@php
 
-@section('content')
+/**
+ * @var $parser \Parserbin\Models\Parser
+ */
+
+@endphp
+
+@extends('user.layout')
+
+@section('me.content')
     @if(!$me->hasParsers())
         <p>
             You have not any parser. <a href="/">Create it now!</a>
@@ -10,13 +18,8 @@
             @foreach ($me->parsers as $parser)
                 <div class="parser">
                     <div class="title">
-                        {{ $parser->title }}
+                        <a href="{{route('parser', ['hash' => $parser->hash])}}">{{ $parser->title }}</a>
                     </div>
-                    @foreach($parser->scripts as $script)
-                        <div class="code">
-                            {{ $script->content }}
-                        </div>
-                    @endforeach
                 </div>
             @endforeach
         </div>

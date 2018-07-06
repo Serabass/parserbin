@@ -1,5 +1,7 @@
-@extends('general')
+@extends('user.layout')
 
-@section('content')
-    {{ $me->email }}
+@section('me.content')
+    <div>
+        {{ $me->email }}
+    </div>
 @endsection

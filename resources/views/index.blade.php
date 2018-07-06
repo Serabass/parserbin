@@ -24,6 +24,10 @@
         @if (isset($parser) && $parser->hasForks())
             Forks: {{ $parser->forks->count() }}
         @endif
+
+        @if (isset($parser->userId))
+            Author: <a href="#">{{ $parser->user->name }}</a>
+        @endif
     </div>
     <div class="input block">
         <h4>Input</h4>

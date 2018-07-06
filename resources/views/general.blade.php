@@ -44,7 +44,7 @@
         <a href="/" class="logo-link">
             <img src="/images/logo.png" alt="{parserbin}" class="logo"/>
         </a>
-        <button id="new">New</button>
+        <button id="new">New parser</button>
         @if ($parserPage)
             <button id="save">Save</button>
             <button id="fork">Fork</button>
@@ -64,7 +64,7 @@
         <div class="top-right links">
             @auth
                 {{--<a href="{{ route('me') }}">Me</a>--}}
-                <a href="#">Me<sup>(coming soon)</sup></a>
+                <a href="{{route('me')}}">My profile</a>
                 <a href="#" id="logout">Logout</a>
                 <form action="{{ route('logout') }}" method="POST" id="logout-form">
                     {{ csrf_field() }}
