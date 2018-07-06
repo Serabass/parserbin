@@ -25,7 +25,12 @@ class ParserController extends Controller
     {
         $str = Input::get('data');
         $data = json_decode($str);
-        $parser = $parserService->update($data);
+        $hash = isset($data->hash) ? $data->hash : null;
+        if ($hash && auth()->check()) {
+            $parser = $parserService->update($hash, $data);
+        } else {
+            $parser = $parserService->create($data);
+        }
         return redirect(route('parser', [
             'hash' => $parser->hash,
         ]));

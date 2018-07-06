@@ -53,7 +53,7 @@ class User extends Authenticatable
     public static function me()
     {
         return User::with('parsers')
-            ->whereId(Auth::id())
+            ->whereId(auth()->id())
             ->first();
     }
 
@@ -69,5 +69,9 @@ class User extends Authenticatable
     public function parsers()
     {
         return $this->hasMany(Parser::class, 'userId');
+    }
+
+    public function hasParsers() {
+        return $this->parsers->count() > 0;
     }
 }

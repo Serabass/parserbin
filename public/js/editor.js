@@ -110,11 +110,16 @@ $(function () {
         var input = $('#input').data('editor').getValue();
         var script = $('.codemirror.script').data('editor').getValue();
         var title = $('#parser-title').val();
-        var json = JSON.stringify({
+        var hash = location.pathname.match(/^\/~(\w+?)$/);
+        var data = {
             input: input,
             script: script,
             title: title
-        });
+        };
+        if (hash) {
+            data.hash = hash[1];
+        }
+        var json = JSON.stringify(data);
         $saveform.find('[name="data"]').val(json);
         $saveform.submit();
     });

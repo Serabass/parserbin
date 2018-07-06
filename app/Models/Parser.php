@@ -75,7 +75,9 @@ class Parser extends Model
 
     public function getIsMineAttribute()
     {
-        return Auth::check() && $this->userId === Auth::id();
+        return $this->userId
+            && Auth::check()
+            && $this->userId === Auth::id();
     }
 
     public static function generateFreeHash()
