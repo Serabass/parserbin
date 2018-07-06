@@ -29,6 +29,7 @@ Route::group(['prefix' => '/~{hash}', 'as' => 'parser'], function () {
 Route::group(['prefix' => '/@{username}', 'as' => 'user'], function () {
     Route::get('/', 'UserController@show')->name('.show');
     Route::get('/~{hash}', 'ParserController@showByUser')->name('.parser');
+    Route::get('/~{hash}/embed', 'ParserController@embed')->name('.parser.embed');
 });
 
 Route::post('/p/save', 'ParserController@update')->name('update-parser');
