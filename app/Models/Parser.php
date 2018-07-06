@@ -122,7 +122,13 @@ class Parser extends Model
 
     public function url()
     {
-        return route('parser', ['hash' => $this->hash]);
+        if ($this->user) {
+            return route('user.parser', [
+                'user' => $this->user->name,
+                'hash' => $this->hash
+            ]);
+        }
+        return route('parser.index', ['hash' => $this->hash]);
     }
 
     public function embedUrl()

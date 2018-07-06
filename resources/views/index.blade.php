@@ -29,10 +29,12 @@
             Author: <a href="{{ $parser->user->url() }}">{{ $parser->user->name }}</a>
         @endif
 
-        <span id="embed-code">
+        @if (isset($parser))
+            <span id="embed-code">
             Embed:
             <input type="text" value="{{ $parser->embed_code }}">
         </span>
+        @endif
     </div>
     <div class="input block">
         <h4>Input</h4>

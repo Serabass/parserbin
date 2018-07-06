@@ -16,22 +16,27 @@ Auth::routes();
 Route::get('/sandbox', 'SandboxController@index')->name('sandbox');
 Route::get('/', 'ParserController@create')->name('home');
 Route::get('/fork/~{hash}', 'ParserController@fork')->name('forkParser');
-Route::get('/{user}/~{hash}', 'ParserController@showByUser')->name('parser');
+
 Route::get('/p/{hash}', function (string $hash) {
     return redirect(route('parser', ['hash' => $hash]));
 })->name('parser.redirect');
-Route::get('/~{hash}/embed', 'ParserController@embed')->name('parser.embed');
-Route::get('/~{hash}', 'ParserController@show')->name('parser');
-Route::get('/@{username}', 'userController@show')->name('user.show');
+
+Route::group(['prefix' => '/~{hash}', 'as' => 'parser'], function () {
+    Route::get('/', 'ParserController@show')->name('.index');
+    Route::get('/embed', 'ParserController@embed')->name('.embed');
+});
+
+Route::group(['prefix' => '/@{username}', 'as' => 'user'], function () {
+    Route::get('/', 'UserController@show')->name('.show');
+    Route::get('/~{hash}', 'ParserController@showByUser')->name('.parser');
+});
+
 Route::post('/p/save', 'ParserController@update')->name('update-parser');
 
-Route::get('/me', 'UserController@me')
-    ->name('me')
-    ->middleware(['auth']);
-
-Route::get('/me/parsers', 'UserController@parsers')
-    ->name('me.parsers')
-    ->middleware(['auth']);
+Route::group(['prefix' => '/me', 'as' => 'me', 'middleware' => 'auth'], function () {
+    Route::get('/', 'UserController@me')->name('.index');
+    Route::get('/parsers', 'UserController@parsers')->name('.parsers');
+});
 
 Route::group(['prefix' => 'login', 'namespace' => 'Auth'], function () {
     Route::get('github', 'LoginController@redirectToProvider')->name('login-social.github');

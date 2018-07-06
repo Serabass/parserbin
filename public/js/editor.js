@@ -106,8 +106,11 @@ $(function () {
     });
 
     $('#fork').click(function () {
-        debugger;
         location.href = '/fork/~' + getParserHash();
+    });
+
+    $('#embed-code input').focus(function () {
+        this.select();
     });
 
     $('#save').click(function () {

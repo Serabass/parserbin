@@ -53,7 +53,9 @@
         <button id="new">New parser</button>
         @if ($parserPage)
             <button id="save">Save</button>
-            <button id="fork">Fork</button>
+            @if (isset($parser))
+                <button id="fork">Fork</button>
+            @endif
             <button id="toggle-code">Toggle Code</button>
             <a id="bookmarklet"
                href="javascript:~function () {var text = getSelection().toString(); if (!text) return; window.open('{{\Illuminate\Support\Facades\URL::to('')}}#' + encodeURI(text))}();"
@@ -69,8 +71,8 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                {{--<a href="{{ route('me') }}">Me</a>--}}
-                <a href="{{route('me')}}">My profile</a>
+                {{--<a href="{{ route('me.index') }}">Me</a>--}}
+                <a href="{{route('me.index')}}">My profile</a>
                 <a href="#" id="logout">Logout</a>
                 <form action="{{ route('logout') }}" method="POST" id="logout-form">
                     {{ csrf_field() }}

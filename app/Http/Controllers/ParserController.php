@@ -18,6 +18,13 @@ class ParserController extends Controller
     {
         $parser = $parserService->show($hash);
 
+        if ($parser->user) {
+            return redirect(route('user.parser', [
+                'user' => $parser->user->name,
+                'hash' => $parser->hash
+            ]));
+        }
+
         if (!$parser) {
             return abort(404); // Or redirect 'home'
         }
@@ -69,7 +76,7 @@ class ParserController extends Controller
         } else {
             $parser = $parserService->create($data);
         }
-        return redirect(route('parser', [
+        return redirect(route('parser.index', [
             'hash' => $parser->hash,
         ]));
     }
@@ -81,7 +88,7 @@ class ParserController extends Controller
          */
         $new = $parserService->fork($hash);
 
-        return redirect(route('parser', [
+        return redirect(route('parser.index', [
             'hash' => $new->hash
         ]));
     }
