@@ -114,18 +114,18 @@ $(function () {
     });
 
     $('#save').click(function () {
-        var $saveform = $('#saveform');
-        var input = $('#input').data('editor').getValue();
-        var script = $('.codemirror.script').data('editor').getValue();
-        var title = $('#parser-title').val();
-        var hash = getParserHash();
-        var data = {
-            input: input,
-            script: script,
-            title: title
-        };
+        var $saveform = $('#saveform'),
+            input = $('#input').data('editor').getValue(),
+            script = $('.codemirror.script').data('editor').getValue(),
+            title = $('#parser-title').val(),
+            hash = getParserHash(),
+            data = {
+                input: input,
+                script: script,
+                title: title
+            };
         if (hash) {
-            data.hash = hash[1];
+            data.hash = hash;
         }
         var json = JSON.stringify(data);
         $saveform.find('[name="data"]').val(json);
