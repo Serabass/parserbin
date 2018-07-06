@@ -2,72 +2,41 @@
 
 namespace Parserbin\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use Parserbin\Models\Language;
 use Parserbin\Models\Parser;
-use Parserbin\Models\Script;
+use Parserbin\Services\ParserService;
 
 class ParserController extends Controller
 {
-    public function create(Request $request)
+    public function create()
     {
         return view('index', ['parserPage' => true]);
     }
 
-    public function show($hash)
+    public function show($hash, ParserService $parserService)
     {
-        /**
-         * @var $parser Parser
-         */
-        $parser = Parser::whereHash($hash)->first();
-
-        $parser->lastActivity = Carbon::now();
-        $parser->save();
-
         return view('index', [
-            'parser' => $parser,
+            'parser' => $parserService->show($hash),
             'parserPage' => true,
         ]);
     }
 
-    public function update(Request $request)
+    public function update(ParserService $parserService)
     {
         $str = Input::get('data');
         $data = json_decode($str);
-
-        $parser = new Parser();
-        $parser->hash = Parser::generateFreeHash();
-        $parser->title = $data->title;
-        $parser->input = $data->input;
-        $parser->save();
-
-        $script = new Script();
-        $script->language()->associate(Language::default());
-        $script->parser()->associate($parser);
-        $script->content = $data->script;
-        $script->save();
-
+        $parser = $parserService->update($data);
         return redirect(route('parser', [
             'hash' => $parser->hash,
         ]));
     }
 
-    public function fork($hash)
+    public function fork($hash, ParserService $parserService)
     {
-        /**
-         * @var $parser Parser
-         */
-        $parser = Parser::whereHash($hash)->first();
-
         /**
          * @var $new Parser
          */
-        $new = $parser->replicate();
-        $new->hash = Parser::generateFreeHash();
-        $new->parentId = $parser->id;
-        $new->push();
+        $new = $parserService->fork($hash);
 
         return redirect(route('parser', [
             'hash' => $new->hash

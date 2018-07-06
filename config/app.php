@@ -170,6 +170,8 @@ return [
          * Package Service Providers...
          */
         SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
+
+        \Parserbin\Providers\ParserServiceProvider::class,
         /*
          * Application Service Providers...
          */

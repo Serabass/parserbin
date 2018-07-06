@@ -5,6 +5,7 @@ namespace Parserbin;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Parserbin\Models\Parser;
 
 /**
@@ -48,6 +49,13 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+
+    public static function me()
+    {
+        return User::with('parsers')
+            ->whereId(Auth::id())
+            ->first();
+    }
 
     /**
      * The attributes that should be hidden for arrays.

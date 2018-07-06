@@ -2,6 +2,7 @@
 
 namespace Parserbin\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -94,5 +95,25 @@ class Parser extends Model
     public function hasForks()
     {
         return $this->forks->count() > 0;
+    }
+
+    public function updateLastActivity()
+    {
+        $this->lastActivity = Carbon::now();
+        $this->save();
+        return $this;
+    }
+
+    public function fork()
+    {
+        /**
+         * @var $new Parser
+         */
+        $new = $this->replicate();
+        $new->hash = self::generateFreeHash();
+        $new->parentId = $this->id;
+        $new->push();
+
+        return $new;
     }
 }

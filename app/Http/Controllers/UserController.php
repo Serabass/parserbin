@@ -7,21 +7,24 @@ use Parserbin\User;
 
 class UserController extends Controller
 {
+    private $me;
+
+    public function __construct()
+    {
+        $this->me = User::me();
+    }
+
     public function me()
     {
-        $me = User::whereId(Auth::id())->first();
-
         return view('user.me', [
-            'me' => $me,
+            'me' => $this->me,
         ]);
     }
 
     public function parsers()
     {
-        $me = User::with('parsers')->whereId(Auth::id())->first();
-
         return view('user.parsers', [
-            'me' => $me,
+            'me' => $this->me
         ]);
     }
 }
