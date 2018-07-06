@@ -43,6 +43,7 @@ use Parserbin\User;
  * @property-read \Illuminate\Database\Eloquent\Collection|\Parserbin\Models\Parser[] $forks
  * @property-read \Parserbin\Models\Parser|null $parent
  * @property int $indexable
+ * @property string $embed_code
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Parser whereIndexable($value)
  */
 class Parser extends Model
@@ -117,5 +118,20 @@ class Parser extends Model
         $new->push();
 
         return $new;
+    }
+
+    public function url()
+    {
+        return route('parser', ['hash' => $this->hash]);
+    }
+
+    public function embedUrl()
+    {
+        return route('parser.embed', ['hash' => $this->hash]);
+    }
+
+    public function getEmbedCodeAttribute()
+    {
+        return '<iframe src="' . $this->embedUrl() . '"></iframe>';
     }
 }

@@ -18,7 +18,7 @@
             @foreach ($me->parsers as $parser)
                 <div class="parser">
                     <div class="title">
-                        <a href="{{route('parser', ['hash' => $parser->hash])}}">{{ $parser->title }}</a>
+                        <a href="{{$parser->url()}}">{{ $parser->title }}</a>
                     </div>
                 </div>
             @endforeach

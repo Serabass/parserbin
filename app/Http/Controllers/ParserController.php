@@ -16,8 +16,16 @@ class ParserController extends Controller
 
     public function show($hash, ParserService $parserService)
     {
+        $parser = $parserService->show($hash);
+
+        if (!$parser) {
+            return abort(404); // Or redirect 'home'
+        }
+
+        $parser->updateLastActivity();
+
         return view('index', [
-            'parser' => $parserService->show($hash),
+            'parser' => $parser,
             'parserPage' => true,
         ]);
     }
@@ -31,6 +39,22 @@ class ParserController extends Controller
 
         return view('index', [
             'parser' => $parserService->showByUser($user, $hash),
+            'parserPage' => true,
+        ]);
+    }
+
+    public function embed($hash, ParserService $parserService)
+    {
+        $parser = $parserService->show($hash);
+
+        if (!$parser) {
+            return abort(404); // Or redirect 'home'
+        }
+
+        $parser->updateLastActivity();
+
+        return view('embed', [
+            'parser' => $parser,
             'parserPage' => true,
         ]);
     }

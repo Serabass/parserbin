@@ -14,8 +14,7 @@ class ParserService
     public function show($hash)
     {
         return Parser::whereHash($hash)
-            ->first()
-            ->updateLastActivity();
+            ->first();
     }
 
     public function showByUser(User $user, $hash)

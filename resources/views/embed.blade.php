@@ -1,17 +1,55 @@
-@extends('general')
 @php
-    use Parserbin\Models\Parser;
-        /**
-         * @var $parser Parser
-         **/
-    $i = 0;
+    if (!isset($parserPage)) {
+        $parserPage = false;
+    }
+
+$i = 0;
+/**
+ * @var $parser \Parserbin\Models\Parser
+ */
 @endphp
-@section('content')
+
+        <!doctype html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    @if ($parserPage)
+        <meta name="parser-hash" content="{{ isset($parser) ? $parser->hash : '' }}">
+    @endif
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots"
+          content="{{ ($parserPage && isset($parser)) ? ($parser->indexable ? 'index' : 'noindex') : 'noindex' }}, follow"/>
+    <title>{parserbin} - Parse everything!</title>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/codemirror/lib/codemirror.js"></script>
+    <script src="/bower_components/codemirror/mode/javascript/javascript.js"></script>
+    <script src="/bower_components/underscore/underscore-min.js"></script>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
+    <link href="/bower_components/codemirror/lib/codemirror.css" rel="stylesheet" type="text/css">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="/bower_components/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet"
+          type="text/css">
+
+    <link rel="shortcut icon" href="/images/favicon.png"/>
+
+    <script src="/js/editor.js"></script>
+</head>
+<body>
+<div class="position-ref top full-height">
     <div>
         <label for="parser-title">
-            Title:
-            <input type="text" id="parser-title" placeholder="My awesome parser"
-                   value="{{ isset($parser) ? $parser->title : '' }}">
+            <h3>{{ isset($parser) ? $parser->title : '' }}
+                <a href="{{ $parser->url() }}" target="_blank">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </h3>
         </label>
 
         @if (isset($parser) && $parser->isChild())
@@ -28,11 +66,6 @@
         @if (isset($parser->userId))
             Author: <a href="{{ $parser->user->url() }}">{{ $parser->user->name }}</a>
         @endif
-
-        <span id="embed-code">
-            Embed:
-            <input type="text" value="{{ $parser->embed_code }}">
-        </span>
     </div>
     <div class="input block">
         <h4>Input</h4>
@@ -71,4 +104,6 @@
         <input type="hidden" name="data"/>
         {{ csrf_field() }}
     </form>
-@endsection
+</div>
+</body>
+</html>

@@ -41,7 +41,6 @@
   float: left;
 }
 
-
 .toolbar {
   position: absolute;
   top: 0;
@@ -97,6 +96,9 @@ a.logo-link {
   right: 0;
   top: 80px;
   bottom: 70px;
+  &.top {
+    top: 0;
+  }
 }
 
 #input, .script, #output {
@@ -124,10 +126,17 @@ a.logo-link {
   width: 300px;
 }
 
+#embed-code {
+  float: right;
+  margin-right: 200px;
+  input {
+    width: 390px;
+  }
+}
+
 .CodeMirror {
   height: 100%;
 }
-
 
 .parsers {
 
