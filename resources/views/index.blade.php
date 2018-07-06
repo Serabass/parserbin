@@ -26,18 +26,20 @@
         @endif
 
         @if (isset($parser->userId))
-            Author: <a href="#">{{ $parser->user->name }}</a>
+            Author: <a href="{{ $parser->user->url() }}">{{ $parser->user->name }}</a>
         @endif
     </div>
     <div class="input block">
         <h4>Input</h4>
-        <textarea id="input" class="codemirror" data-mode="plain">{{ isset($parser) ? $parser->input : 'Hello!' }}</textarea>
+        <textarea id="input" class="codemirror"
+                  data-mode="plain">{{ isset($parser) ? $parser->input : 'Hello!' }}</textarea>
     </div>
     <div class="scripts block" style="float: left;">
         <h4>Script <span id="execTime"></span></h4>
         @if (isset($parser))
             @foreach ($parser->scripts()->get() as $script)
-                <textarea name="script[{{$i}}]" class="codemirror script" data-mode="javascript" data-id="{{$i}}" cols="50"
+                <textarea name="script[{{$i}}]" class="codemirror script" data-mode="javascript" data-id="{{$i}}"
+                          cols="50"
                           rows="20">{{ $script->content }}</textarea>
                 @php $i++; @endphp
             @endforeach

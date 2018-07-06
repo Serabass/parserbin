@@ -13,12 +13,14 @@
 
 Auth::routes();
 
-Route::get('/', 'ParserController@create');
+Route::get('/', 'ParserController@create')->name('home');
+Route::get('/fork/~{hash}', 'ParserController@fork')->name('forkParser');
+Route::get('/{user}/~{hash}', 'ParserController@showByUser')->name('parser');
 Route::get('/p/{hash}', function (string $hash) {
     return redirect(route('parser', ['hash' => $hash]));
 })->name('parser.redirect');
 Route::get('/~{hash}', 'ParserController@show')->name('parser');
-Route::get('/fork/~{hash}', 'ParserController@fork')->name('forkParser');
+Route::get('/@{username}', 'userController@show')->name('user.show');
 Route::post('/p/save', 'ParserController@update')->name('update-parser');
 
 Route::get('/me', 'UserController@me')

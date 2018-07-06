@@ -74,4 +74,8 @@ class User extends Authenticatable
     public function hasParsers() {
         return $this->parsers->count() > 0;
     }
+
+    public function url() {
+        return route('user.show', ['username' => $this->name]);
+    }
 }

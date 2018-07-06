@@ -14,6 +14,10 @@ $(function () {
         }
     }
 
+    function getParserHash() {
+        return $('meta[name=parser-hash]').attr('content');
+    }
+
     function applyEditor(element) {
         var mode = $(element).data('mode');
         return CodeMirror.fromTextArea(element, {
@@ -102,7 +106,8 @@ $(function () {
     });
 
     $('#fork').click(function () {
-        location.href = '/fork' + location.pathname;
+        debugger;
+        location.href = '/fork/~' + getParserHash();
     });
 
     $('#save').click(function () {
@@ -110,7 +115,7 @@ $(function () {
         var input = $('#input').data('editor').getValue();
         var script = $('.codemirror.script').data('editor').getValue();
         var title = $('#parser-title').val();
-        var hash = location.pathname.match(/^\/~(\w+?)$/);
+        var hash = getParserHash().match(/^\/~(\w+?)$/);
         var data = {
             input: input,
             script: script,

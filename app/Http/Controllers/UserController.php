@@ -19,4 +19,12 @@ class UserController extends Controller
             'me' => User::me()
         ]);
     }
+
+    public function show($username)
+    {
+        dump($username); die;
+        return view('user.parsers', [
+            'me' => User::me()
+        ]);
+    }
 }

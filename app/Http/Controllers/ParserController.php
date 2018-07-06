@@ -5,6 +5,7 @@ namespace Parserbin\Http\Controllers;
 use Illuminate\Support\Facades\Input;
 use Parserbin\Models\Parser;
 use Parserbin\Services\ParserService;
+use Parserbin\User;
 
 class ParserController extends Controller
 {
@@ -17,6 +18,19 @@ class ParserController extends Controller
     {
         return view('index', [
             'parser' => $parserService->show($hash),
+            'parserPage' => true,
+        ]);
+    }
+
+    public function showByUser($username, $hash, ParserService $parserService)
+    {
+        $user = User::whereName($username)->first();
+
+        if (!$user)
+            return redirect('home');
+
+        return view('index', [
+            'parser' => $parserService->showByUser($user, $hash),
             'parserPage' => true,
         ]);
     }

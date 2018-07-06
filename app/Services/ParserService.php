@@ -7,14 +7,21 @@ use Parserbin\Exceptions\ParserAccessDeniedException;
 use Parserbin\Models\Language;
 use Parserbin\Models\Parser;
 use Parserbin\Models\Script;
-use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
-use Symfony\Component\Routing\Exception\MethodNotAllowedException;
+use Parserbin\User;
 
 class ParserService
 {
     public function show($hash)
     {
         return Parser::whereHash($hash)
+            ->first()
+            ->updateLastActivity();
+    }
+
+    public function showByUser(User $user, $hash)
+    {
+        return Parser::whereHash($hash)
+            ->where('userId', '=', $user->id)
             ->first()
             ->updateLastActivity();
     }
@@ -70,6 +77,6 @@ class ParserService
 
     public function fork($hash)
     {
-        return Parser::whereHash($hash)->fork();
+        return Parser::whereHash($hash)->first()->fork();
     }
 }
