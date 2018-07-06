@@ -27,17 +27,13 @@ Route::group(['prefix' => '/~{hash}', 'as' => 'parser'], function () {
 });
 
 Route::group(['prefix' => '/@{username}', 'as' => 'user'], function () {
-    Route::get('/', 'UserController@show')->name('.show');
+    Route::get('/', 'UserController@me')->name('.index');
+    Route::get('/parsers', 'UserController@parsers')->name('.parsers');
     Route::get('/~{hash}', 'ParserController@showByUser')->name('.parser');
     Route::get('/~{hash}/embed', 'ParserController@embed')->name('.parser.embed');
 });
 
 Route::post('/p/save', 'ParserController@update')->name('update-parser');
-
-Route::group(['prefix' => '/me', 'as' => 'me', 'middleware' => 'auth'], function () {
-    Route::get('/', 'UserController@me')->name('.index');
-    Route::get('/parsers', 'UserController@parsers')->name('.parsers');
-});
 
 Route::group(['prefix' => 'login', 'namespace' => 'Auth'], function () {
     Route::get('github', 'LoginController@redirectToProvider')->name('login-social.github');

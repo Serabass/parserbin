@@ -71,7 +71,7 @@
         <div class="top-right links">
             @auth
                 {{--<a href="{{ route('me.index') }}">Me</a>--}}
-                <a href="{{route('me.index')}}">My profile</a>
+                <a href="{{route('user.index', ['username' => \Parserbin\User::me()->name])}}">My profile</a>
                 <a href="#" id="logout">Logout</a>
                 <form action="{{ route('logout') }}" method="POST" id="logout-form">
                     {{ csrf_field() }}

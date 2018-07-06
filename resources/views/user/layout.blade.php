@@ -3,8 +3,8 @@
 @section('content')
     <div class="links profile-links">
         {{--<a href="{{ route('me.index') }}">Me</a>--}}
-        <a href="{{route('me.index')}}">Common</a>
-        <a href="{{route('me.parsers')}}" id="logout">My parsers</a>
+        <a href="{{$me->url()}}">Common</a>
+        <a href="{{route('user.parsers', ['username' => $me->name])}}">My parsers</a>
     </div>
 
     <div class="profile-content">

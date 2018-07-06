@@ -65,7 +65,7 @@ $(function () {
             execTime = '<1';
         }
 
-        execTimeSpan.text('[Last execution time:' + execTime + 'ms]');
+        execTimeSpan.text(execTime + 'ms');
     }
 
     $('textarea.codemirror').each(function () {
@@ -118,7 +118,7 @@ $(function () {
         var input = $('#input').data('editor').getValue();
         var script = $('.codemirror.script').data('editor').getValue();
         var title = $('#parser-title').val();
-        var hash = getParserHash().match(/^\/~(\w+?)$/);
+        var hash = getParserHash();
         var data = {
             input: input,
             script: script,

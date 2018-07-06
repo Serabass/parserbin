@@ -76,9 +76,7 @@ class ParserController extends Controller
         } else {
             $parser = $parserService->create($data);
         }
-        return redirect(route('parser.index', [
-            'hash' => $parser->hash,
-        ]));
+        return redirect($parser->url());
     }
 
     public function fork($hash, ParserService $parserService)

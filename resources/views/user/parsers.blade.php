@@ -18,7 +18,13 @@
             @foreach ($me->parsers as $parser)
                 <div class="parser">
                     <div class="title">
-                        <a href="{{$parser->url()}}">{{ $parser->title }}</a>
+                        <a href="{{$parser->url()}}">
+                            @if (!empty($parser->title))
+                            {{ $parser->title }}
+                            @else
+                                <i>[no title]</i>
+                            @endif
+                        </a>
                     </div>
                 </div>
             @endforeach

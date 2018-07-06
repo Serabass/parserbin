@@ -111,6 +111,7 @@ a.logo-link {
 #execTime {
   font-weight: normal;
   color: #afafaf;
+  float: right;
 }
 
 #input, #output {
@@ -125,6 +126,11 @@ a.logo-link {
 #parser-title {
   padding: 10px;
   width: 300px;
+  border: none;
+  border-bottom: 2px solid black;
+  &:focus {
+    border-bottom: 2px solid #4d90fe;
+  }
 }
 
 #embed-code {

@@ -20,11 +20,12 @@ class UserController extends Controller
         ]);
     }
 
-    public function show($username)
-    {
-        dump($username); die;
-        return view('user.parsers', [
-            'me' => User::me()
+    public function show($username) {
+
+        $user = User::whereName($username)->first();
+
+        return view('user.me', [
+            'me' => $user
         ]);
     }
 }

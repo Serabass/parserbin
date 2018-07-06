@@ -76,6 +76,6 @@ class User extends Authenticatable
     }
 
     public function url() {
-        return route('user.show', ['username' => $this->name]);
+        return route('user.index', ['username' => $this->name]);
     }
 }
