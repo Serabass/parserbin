@@ -9,7 +9,7 @@
 @extends('user.layout')
 
 @section('me.content')
-    @if(!$me->hasParsers())
+    @if(!$me->has_parsers)
         <p>
             You have not any parser. <a href="/">Create it now!</a>
         </p>

@@ -2,6 +2,7 @@
 
 namespace Parserbin\Models;
 
+use Barryvdh\LaravelIdeHelper\Eloquent;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,13 +38,15 @@ use Parserbin\User;
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Parser whereUserId($value)
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\Models\Parser withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\Models\Parser withoutTrashed()
- * @mixin \Eloquent
+ * @mixin Eloquent
  * @property int|null $parentId
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Parser whereParentId($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\Parserbin\Models\Parser[] $forks
  * @property-read \Parserbin\Models\Parser|null $parent
  * @property int $indexable
  * @property string $embed_code
+ * @property bool $is_child
+ * @property bool $is_parent
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Parser whereIndexable($value)
  */
 class Parser extends Model
@@ -53,6 +56,10 @@ class Parser extends Model
     protected $appends = ['isMine'];
 
     protected $dates = ['lastActivity'];
+
+    protected $casts = [
+        "indexable" => "boolean",
+    ];
 
     public function user()
     {
@@ -90,12 +97,12 @@ class Parser extends Model
         return $hash;
     }
 
-    public function isChild()
+    public function getIsChildAttribute()
     {
         return $this->parentId !== null;
     }
 
-    public function hasForks()
+    public function getIsParentAttribute()
     {
         return $this->forks->count() > 0;
     }

@@ -9,7 +9,7 @@ $i = 0;
  */
 @endphp
 
-        <!doctype html>
+<!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -52,14 +52,14 @@ $i = 0;
             </h3>
         </label>
 
-        @if (isset($parser) && $parser->isChild())
+        @if (isset($parser) && $parser->is_child)
             Forked from: <a href="{{$parser->parent->url()}}">
                 {{ $parser->parent->hash }}
             </a>
 
         @endif
 
-        @if (isset($parser) && $parser->hasForks())
+        @if (isset($parser) && $parser->is_parent)
             Forks: {{ $parser->forks->count() }}
         @endif
 

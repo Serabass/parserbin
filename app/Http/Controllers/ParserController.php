@@ -90,4 +90,11 @@ class ParserController extends Controller
             'hash' => $new->hash
         ]));
     }
+
+    public function getSharedParser($hash, ParserService $parserService)
+    {
+        $parser = $parserService->show($hash);
+        $parser->load(['scripts', 'user']);
+        return $parser;
+    }
 }

@@ -14,14 +14,11 @@
                    value="{{ isset($parser) ? $parser->title : '' }}">
         </label>
 
-        @if (isset($parser) && $parser->isChild())
-            Forked from: <a href="{{$parser->parent->url()}}">
-                {{ $parser->parent->hash }}
-            </a>
-
+        @if (isset($parser) && $parser->is_child)
+            Forked from: <a href="{{$parser->parent->url()}}">{{ $parser->parent->hash }}</a>
         @endif
 
-        @if (isset($parser) && $parser->hasForks())
+        @if (isset($parser) && $parser->is_parent)
             Forks: {{ $parser->forks->count() }}
         @endif
 

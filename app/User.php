@@ -2,10 +2,10 @@
 
 namespace Parserbin;
 
+use Barryvdh\LaravelIdeHelper\Eloquent;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Auth;
 use Parserbin\Models\Parser;
 
 /**
@@ -19,6 +19,7 @@ use Parserbin\Models\Parser;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $deleted_at
+ * @property bool $has_parsers
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\Parserbin\Models\Parser[] $parsers
  * @method static bool|null forceDelete()
@@ -34,7 +35,7 @@ use Parserbin\Models\Parser;
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\User whereUpdatedAt($value)
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\User withoutTrashed()
- * @mixin \Eloquent
+ * @mixin Eloquent
  */
 class User extends Authenticatable
 {
@@ -63,7 +64,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
+        'email',
+        'created_at',
+        'updated_at',
+        'deleted_at'
     ];
 
     public function parsers()
@@ -71,11 +77,15 @@ class User extends Authenticatable
         return $this->hasMany(Parser::class, 'userId');
     }
 
-    public function hasParsers() {
+    public function getHasParsersAttribute()
+    {
         return $this->parsers->count() > 0;
     }
 
-    public function url() {
-        return route('user.index', ['username' => $this->name]);
+    public function url()
+    {
+        return route('user.index', [
+            'username' => $this->name
+        ]);
     }
 }
