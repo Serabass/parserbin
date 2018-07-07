@@ -89,7 +89,7 @@ class Parser extends Section
                 ->required(true)
                 ->setAddon(URL::to('/p/').'/') : null,
 
-            AdminFormElement::selectajax('userId', 'Пользователь')
+            AdminFormElement::selectajax('user_id', 'Пользователь')
                 ->setModelForOptions(\Parserbin\User::class),
 
             AdminFormElement::textarea('input', 'Входящие данные'),

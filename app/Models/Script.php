@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @property int $id
  * @property string $content
- * @property int $parserId
- * @property int $languageId
+ * @property int $parser_id
+ * @property int $language_id
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $deleted_at
@@ -37,11 +37,11 @@ class Script extends Model
 
     public function language()
     {
-        return $this->belongsTo(Language::class, 'languageId');
+        return $this->belongsTo(Language::class, 'language_id');
     }
 
     public function parser()
     {
-        return $this->belongsTo(Parser::class, 'parserId');
+        return $this->belongsTo(Parser::class, 'parser_id');
     }
 }

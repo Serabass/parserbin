@@ -63,7 +63,7 @@ $i = 0;
             Forks: {{ $parser->forks->count() }}
         @endif
 
-        @if (isset($parser->userId))
+        @if (isset($parser->user_id))
             Author: <a href="{{ $parser->user->url() }}">{{ $parser->user->name }}</a>
         @endif
     </div>

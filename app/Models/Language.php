@@ -31,6 +31,6 @@ class Language extends Model
 
     public function scripts()
     {
-        return $this->hasMany(Script::class, 'languageId');
+        return $this->hasMany(Script::class, 'language_id');
     }
 }

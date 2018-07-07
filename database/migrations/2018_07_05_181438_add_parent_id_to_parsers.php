@@ -14,7 +14,7 @@ class AddParentIdToParsers extends Migration
     public function up()
     {
         Schema::table('parsers', function (Blueprint $table) {
-            $table->integer('parentId')->after('userId')->nullable();
+            $table->integer('parent_id')->after('user_id')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddParentIdToParsers extends Migration
     public function down()
     {
         Schema::table('parsers', function (Blueprint $table) {
-            $table->dropColumn('parentId');
+            $table->dropColumn('parent_id');
         });
     }
 }

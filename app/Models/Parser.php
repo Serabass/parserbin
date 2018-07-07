@@ -15,9 +15,9 @@ use Parserbin\User;
  * @property int $id
  * @property string|null $title
  * @property string $hash
- * @property int|null $userId
+ * @property int|null $user_id
  * @property string $input
- * @property string|null $lastActivity
+ * @property string|null $last_activity
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $deleted_at
@@ -48,6 +48,7 @@ use Parserbin\User;
  * @property bool $is_child
  * @property bool $is_parent
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Parser whereIndexable($value)
+ * @property int|null $parent_id
  */
 class Parser extends Model
 {
@@ -55,7 +56,7 @@ class Parser extends Model
 
     protected $appends = ['isMine'];
 
-    protected $dates = ['lastActivity'];
+    protected $dates = ['last_activity'];
 
     protected $casts = [
         "indexable" => "boolean",
@@ -63,29 +64,29 @@ class Parser extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'userId');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function parent()
     {
-        return $this->belongsTo(Parser::class, 'parentId');
+        return $this->belongsTo(Parser::class, 'parent_id');
     }
 
     public function forks()
     {
-        return $this->hasMany(Parser::class, 'parentId');
+        return $this->hasMany(Parser::class, 'parent_id');
     }
 
     public function scripts()
     {
-        return $this->hasMany(Script::class, 'parserId');
+        return $this->hasMany(Script::class, 'parser_id');
     }
 
     public function getIsMineAttribute()
     {
-        return $this->userId
+        return $this->user_id
             && Auth::check()
-            && $this->userId === Auth::id();
+            && $this->user_id === Auth::id();
     }
 
     public static function generateFreeHash()
@@ -109,7 +110,7 @@ class Parser extends Model
 
     public function updateLastActivity()
     {
-        $this->lastActivity = Carbon::now();
+        $this->last_activity = Carbon::now();
         $this->save();
         return $this;
     }

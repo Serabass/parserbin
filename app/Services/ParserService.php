@@ -20,7 +20,7 @@ class ParserService
     public function showByUser(User $user, $hash)
     {
         return Parser::whereHash($hash)
-            ->where('userId', '=', $user->id)
+            ->where('user_id', '=', $user->id)
             ->first()
             ->updateLastActivity();
     }

@@ -14,7 +14,7 @@ class AddIndexableToParsers extends Migration
     public function up()
     {
         Schema::table('parsers', function (Blueprint $table) {
-            $table->boolean('indexable')->after('lastActivity')->default(TRUE);
+            $table->boolean('indexable')->after('last_activity')->default(TRUE);
         });
     }
 

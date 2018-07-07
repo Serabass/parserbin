@@ -17,8 +17,8 @@ class CreateScriptsTable extends Migration
         Schema::create('scripts', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('content');
-            $table->integer('parserId');
-            $table->integer('languageId');
+            $table->integer('parser_id');
+            $table->integer('language_id');
             $table->timestamps();
             $table->softDeletes();
         });

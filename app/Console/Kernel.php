@@ -4,6 +4,7 @@ namespace Parserbin\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Parserbin\Console\Commands\CreateAdminUserCommand;
 use Parserbin\Console\Commands\SandboxCommand;
 
 class Kernel extends ConsoleKernel
@@ -15,6 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         SandboxCommand::class,
+        CreateAdminUserCommand::class,
     ];
 
     /**

@@ -67,9 +67,9 @@ class Script extends Section
         $form = \AdminForm::form();
         $form->setElements([
             AdminFormElement::textarea('content', 'Скрипт'),
-            AdminFormElement::selectajax('parserId', 'Парсер')
+            AdminFormElement::selectajax('parser_id', 'Парсер')
                 ->setModelForOptions(\Parserbin\Models\Parser::class),
-            AdminFormElement::selectajax('languageId', 'Язык')
+            AdminFormElement::selectajax('language_id', 'Язык')
                 ->setModelForOptions(\Parserbin\Models\Language::class),
         ]);
 

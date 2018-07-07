@@ -36,6 +36,8 @@ use Parserbin\Models\Parser;
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\User withoutTrashed()
  * @mixin Eloquent
+ * @property int $is_admin
+ * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\User whereIsAdmin($value)
  */
 class User extends Authenticatable
 {
@@ -67,6 +69,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'email',
+        'is_admin',
         'created_at',
         'updated_at',
         'deleted_at'
@@ -74,7 +77,7 @@ class User extends Authenticatable
 
     public function parsers()
     {
-        return $this->hasMany(Parser::class, 'userId');
+        return $this->hasMany(Parser::class, 'user_id');
     }
 
     public function getHasParsersAttribute()
