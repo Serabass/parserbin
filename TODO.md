@@ -18,7 +18,8 @@
 16. **[+]** Move model interacting to Services and write tests for them
 16. ...and write tests for them
 17. Add `type` select that contains: `Line by line`, `Whole file`. First will work as `input` will equal an every line in input string (lines.map), but in case of Second input will equal an entire input string. 
-18. Add a feature to use a parser in another parser as shared function. Then I can write like this:
+18. Move all TODO's to issues and remove this file
+19. Add a feature to use a parser in another parser as shared function. Then I can write like this:
 ```
 // First parser with id /~HylvDLOH2vjk0aKK
 return input.replace(input.match(/(\d+)\.(\d+)\.(\d+)(?:.+?(?:(\d+):(\d+)))?/), "$3-$2-$1"); // Reformat a date
