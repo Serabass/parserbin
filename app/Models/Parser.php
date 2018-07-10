@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Parserbin\User;
 
 /**
- * Parserbin\Models\Parser
+ * Parserbin\Models\Parser.
  *
  * @property int $id
  * @property string|null $title
@@ -24,6 +24,7 @@ use Parserbin\User;
  * @property-read mixed $is_mine
  * @property-read \Illuminate\Database\Eloquent\Collection|\Parserbin\Models\Script[] $scripts
  * @property-read \Parserbin\User|null $user
+ *
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\Models\Parser onlyTrashed()
  * @method static bool|null restore()
@@ -39,15 +40,20 @@ use Parserbin\User;
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\Models\Parser withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\Models\Parser withoutTrashed()
  * @mixin Eloquent
+ *
  * @property int|null $parentId
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Parser whereParentId($value)
+ *
  * @property-read \Illuminate\Database\Eloquent\Collection|\Parserbin\Models\Parser[] $forks
  * @property-read \Parserbin\Models\Parser|null $parent
  * @property int $indexable
  * @property string $embed_code
  * @property bool $is_child
  * @property bool $is_parent
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Parser whereIndexable($value)
+ *
  * @property int|null $parent_id
  */
 class Parser extends Model
@@ -59,7 +65,7 @@ class Parser extends Model
     protected $dates = ['last_activity'];
 
     protected $casts = [
-        "indexable" => "boolean",
+        'indexable' => 'boolean',
     ];
 
     public function user()
@@ -69,12 +75,12 @@ class Parser extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Parser::class, 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
     public function forks()
     {
-        return $this->hasMany(Parser::class, 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 
     public function scripts()
@@ -112,13 +118,14 @@ class Parser extends Model
     {
         $this->last_activity = Carbon::now();
         $this->save();
+
         return $this;
     }
 
     public function fork()
     {
         /**
-         * @var $new Parser
+         * @var Parser
          */
         $new = $this->replicate();
         $new->hash = self::generateFreeHash();
@@ -133,13 +140,14 @@ class Parser extends Model
         if ($this->user) {
             $route = route('user.parser', [
                 'user' => $this->user->name,
-                'hash' => $this->hash
+                'hash' => $this->hash,
             ]);
         } else {
             $route = route('parser.index', [
-                'hash' => $this->hash
+                'hash' => $this->hash,
             ]);
         }
+
         return $route;
     }
 
@@ -148,14 +156,15 @@ class Parser extends Model
         if ($this->user) {
             return route('user.parser.embed', [
                 'user' => $this->user->name,
-                'hash' => $this->hash
+                'hash' => $this->hash,
             ]);
         }
+
         return route('parser.embed', ['hash' => $this->hash]);
     }
 
     public function getEmbedCodeAttribute()
     {
-        return '<iframe src="' . $this->embedUrl() . '"></iframe>';
+        return '<iframe src="'.$this->embedUrl().'"></iframe>';
     }
 }

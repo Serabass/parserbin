@@ -21,7 +21,7 @@ class ParserController extends Controller
         if ($parser->user) {
             return redirect(route('user.parser', [
                 'user' => $parser->user->name,
-                'hash' => $parser->hash
+                'hash' => $parser->hash,
             ]));
         }
 
@@ -32,7 +32,7 @@ class ParserController extends Controller
         $parser->updateLastActivity();
 
         return view('index', [
-            'parser' => $parser,
+            'parser'     => $parser,
             'parserPage' => true,
         ]);
     }
@@ -41,11 +41,12 @@ class ParserController extends Controller
     {
         $user = User::whereName($username)->first();
 
-        if (!$user)
+        if (!$user) {
             return redirect('home');
+        }
 
         return view('index', [
-            'parser' => $parserService->showByUser($user, $hash),
+            'parser'     => $parserService->showByUser($user, $hash),
             'parserPage' => true,
         ]);
     }
@@ -61,7 +62,7 @@ class ParserController extends Controller
         $parser->updateLastActivity();
 
         return view('embed', [
-            'parser' => $parser,
+            'parser'     => $parser,
             'parserPage' => true,
         ]);
     }
@@ -76,18 +77,19 @@ class ParserController extends Controller
         } else {
             $parser = $parserService->create($data);
         }
+
         return redirect($parser->url());
     }
 
     public function fork($hash, ParserService $parserService)
     {
         /**
-         * @var $new Parser
+         * @var Parser
          */
         $new = $parserService->fork($hash);
 
         return redirect(route('parser.index', [
-            'hash' => $new->hash
+            'hash' => $new->hash,
         ]));
     }
 
@@ -95,6 +97,7 @@ class ParserController extends Controller
     {
         $parser = $parserService->show($hash);
         $parser->load(['scripts', 'user']);
+
         return $parser;
     }
 }

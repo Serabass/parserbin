@@ -2,7 +2,6 @@
 
 namespace Parserbin\Services;
 
-
 use Parserbin\Exceptions\ParserAccessDeniedException;
 use Parserbin\Models\Language;
 use Parserbin\Models\Parser;
@@ -28,16 +27,18 @@ class ParserService
     /**
      * @param $hash
      * @param $data
-     * @return \Illuminate\Database\Eloquent\Model|null|object|Parser|static
+     *
      * @throws ParserAccessDeniedException
+     *
+     * @return \Illuminate\Database\Eloquent\Model|null|object|Parser|static
      */
     public function update($hash, $data)
     {
         $parser = Parser::whereHash($hash)->first();
 
-        if (!$parser->is_mine)
+        if (!$parser->is_mine) {
             throw new ParserAccessDeniedException();
-
+        }
         $parser->title = $data->title;
         $parser->input = $data->input;
         $parser->scripts()->delete();
