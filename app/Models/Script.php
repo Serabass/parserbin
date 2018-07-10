@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Parserbin\Models\Script
+ * Parserbin\Models\Script.
  *
  * @property int $id
  * @property string $content
@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string|null $deleted_at
  * @property-read \Parserbin\Models\Language $language
  * @property-read \Parserbin\Models\Parser $parser
+ *
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\Models\Script onlyTrashed()
  * @method static bool|null restore()

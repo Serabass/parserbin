@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Parserbin\Models\Parser;
 
 /**
- * Parserbin\User
+ * Parserbin\User.
  *
  * @property int $id
  * @property string $name
@@ -22,6 +22,7 @@ use Parserbin\Models\Parser;
  * @property bool $has_parsers
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\Parserbin\Models\Parser[] $parsers
+ *
  * @method static bool|null forceDelete()
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\User onlyTrashed()
  * @method static bool|null restore()
@@ -36,7 +37,9 @@ use Parserbin\Models\Parser;
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\User withTrashed()
  * @method static \Illuminate\Database\Query\Builder|\Parserbin\User withoutTrashed()
  * @mixin Eloquent
+ *
  * @property int $is_admin
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\User whereIsAdmin($value)
  */
 class User extends Authenticatable
@@ -55,7 +58,7 @@ class User extends Authenticatable
 
     public static function me()
     {
-        return User::with('parsers')
+        return self::with('parsers')
             ->whereId(auth()->id())
             ->first();
     }
@@ -72,7 +75,7 @@ class User extends Authenticatable
         'is_admin',
         'created_at',
         'updated_at',
-        'deleted_at'
+        'deleted_at',
     ];
 
     public function parsers()
@@ -88,7 +91,7 @@ class User extends Authenticatable
     public function url()
     {
         return route('user.index', [
-            'username' => $this->name
+            'username' => $this->name,
         ]);
     }
 }
