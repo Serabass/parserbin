@@ -16,16 +16,16 @@ class UserController extends Controller
     public function parsers()
     {
         return view('user.parsers', [
-            'me' => User::me()
+            'me' => User::me(),
         ]);
     }
 
-    public function show($username) {
-
+    public function show($username)
+    {
         $user = User::whereName($username)->first();
 
         return view('user.me', [
-            'me' => $user
+            'me' => $user,
         ]);
     }
 }

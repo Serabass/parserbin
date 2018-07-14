@@ -5,7 +5,7 @@ namespace Parserbin\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Parserbin\Models\Language
+ * Parserbin\Models\Language.
  *
  * @property int $id
  * @property string $code
@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\Parserbin\Models\Script[] $scripts
+ *
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Language whereCode($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Language whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\Parserbin\Models\Language whereId($value)
