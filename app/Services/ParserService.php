@@ -11,6 +11,11 @@ use Parserbin\User;
 
 class ParserService
 {
+
+    /**
+     * @param $hash
+     * @return Parser | null
+     */
     public function show($hash)
     {
         return Parser::whereHash($hash)
@@ -76,6 +81,8 @@ class ParserService
 
     public function fork($hash)
     {
-        return Parser::whereHash($hash)->first()->fork();
+        return Parser::whereHash($hash)
+            ->first()
+            ->fork();
     }
 }
